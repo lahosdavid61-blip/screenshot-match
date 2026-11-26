@@ -23,6 +23,11 @@ const sr = {
     title: "Dizajn, ljudi i dobro piće — na jednom mestu.",
     body: "DOT je urbani concept bar u centru Subotice, nekoliko koraka od Gradske kuće. Moderan enterijer, opuštena atmosfera i pažljivo složena karta pića: od jutarnje kafe do koktela i vina uveče.",
     facts: ["Centar grada, kod Gradske kuće", "Besplatan Wi-Fi", "Povremeno živa muzika"],
+    verified: "Provereno istraživanjem",
+    verifiedBody:
+      "Adresa, telefon i Instagram potvrđeni su kroz gradske turističke stranice, Google Maps i lokalne izvore. Aktuelne cene i odobrene fotografije čekaju potvrdu vlasnika.",
+    maps: "Otvori Google Maps",
+    sources: "Izvori",
   },
   menu: {
     kicker: "Meni",
@@ -124,6 +129,11 @@ const hu: Dict = {
     title: "Design, emberek és jó italok — egy helyen.",
     body: "A DOT egy városi concept bar Szabadka belvárosában, néhány lépésre a Városházától. Modern belső tér, laza hangulat és gondosan összeállított itallap: a reggeli kávétól az esti koktélokig és borokig.",
     facts: ["Belváros, a Városháza mellett", "Ingyenes Wi-Fi", "Időnként élő zene"],
+    verified: "Kutatással ellenőrizve",
+    verifiedBody:
+      "A címet, a telefonszámot és az Instagram-profilt a városi turisztikai oldalak, a Google Maps és helyi források egyezően megerősítik. Az aktuális árak és a jóváhagyott fotók tulajdonosi megerősítésre várnak.",
+    maps: "Google Maps megnyitása",
+    sources: "Források",
   },
   menu: {
     kicker: "Itallap",
@@ -224,6 +234,11 @@ const en: Dict = {
     title: "Design, people and good drinks — in one place.",
     body: "DOT is an urban concept bar in central Subotica, a few steps from City Hall. A modern interior, a relaxed crowd and a considered drinks list: from morning coffee to cocktails and wine in the evening.",
     facts: ["City centre, by City Hall", "Free Wi-Fi", "Live music now and then"],
+    verified: "Verified by research",
+    verifiedBody:
+      "The address, phone number and Instagram profile match across the city tourism listings, Google Maps and local sources. Current prices and approved photographs still require owner confirmation.",
+    maps: "Open Google Maps",
+    sources: "Sources",
   },
   menu: {
     kicker: "Menu",

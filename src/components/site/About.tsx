@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
+import { business } from "@/data/business";
 import { Dot, EASE, PhotoSlot, Reveal, SectionHead } from "./ui";
 
 export function About() {
@@ -33,6 +34,25 @@ export function About() {
                 </Reveal>
               ))}
             </ul>
+            <div className="mt-10 border-l-4 border-primary bg-muted/60 p-5 md:p-6">
+              <p className="kicker text-primary">{t.about.verified}</p>
+              <p className="mt-3 text-base leading-relaxed text-foreground/80">
+                {t.about.verifiedBody}
+              </p>
+              <div className="mt-5 flex flex-wrap items-center gap-4 font-display text-sm font-semibold">
+                <a
+                  href={business.mapsSearch}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-line"
+                >
+                  {t.about.maps} ↗
+                </a>
+                <span className="text-muted-foreground">
+                  {business.rating.value.toFixed(1)} / 5 · {business.rating.count} {t.reviews.count}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
