@@ -6,6 +6,7 @@ import { Hero } from "@/components/site/Hero";
 import { About } from "@/components/site/About";
 import { Menu } from "@/components/site/Menu";
 import { Gallery } from "@/components/site/Gallery";
+import { EventMoment } from "@/components/site/EventMoment";
 import { Reviews } from "@/components/site/Reviews";
 import { Social } from "@/components/site/Social";
 import { Visit } from "@/components/site/Visit";
@@ -76,6 +77,7 @@ function Index() {
         <About />
         <Menu />
         <Gallery />
+        <EventMoment />
         <Reviews />
         <Social />
         <Visit />

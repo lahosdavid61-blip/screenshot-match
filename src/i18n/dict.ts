@@ -7,6 +7,7 @@ const sr = {
     about: "O nama",
     menu: "Meni",
     gallery: "Galerija",
+    events: "Događaji",
     reviews: "Utisci",
     visit: "Dođi",
   },
@@ -68,6 +69,13 @@ const sr = {
     prev: "Prethodna",
     next: "Sledeća",
   },
+  event: {
+    kicker: "Trenutak",
+    title: "Muzika, ljudi i noć u DOT-u.",
+    body: "Jedan zabeležen trenutak iz atmosfere bara — pogledajte istu fotografiju sa tankim crnim okvirom i bez njega.",
+    framed: "Sa okvirom",
+    clean: "Bez okvira",
+  },
   reviews: {
     kicker: "Utisci",
     title: "Šta kažu gosti",
@@ -102,6 +110,12 @@ const sr = {
   },
   footer: { rights: "Sva prava zadržana.", hours: "Radno vreme" },
   lang: "Jezik",
+  theme: {
+    label: "Tema",
+    emerald: "Emerald",
+    noir: "Crna",
+    chalk: "Bela",
+  },
   menuOpen: "Otvori meni",
   menuClose: "Zatvori meni",
 };
@@ -113,6 +127,7 @@ const hu: Dict = {
     about: "Rólunk",
     menu: "Itallap",
     gallery: "Galéria",
+    events: "Események",
     reviews: "Vélemények",
     visit: "Látogass el",
   },
@@ -174,6 +189,13 @@ const hu: Dict = {
     prev: "Előző",
     next: "Következő",
   },
+  event: {
+    kicker: "Pillanat",
+    title: "Zene, emberek és egy este a DOT-ban.",
+    body: "Egy valódi pillanat a bár hangulatából — ugyanaz a fotó vékony fekete kerettel és keret nélkül.",
+    framed: "Keretben",
+    clean: "Keret nélkül",
+  },
   reviews: {
     kicker: "Vélemények",
     title: "Amit a vendégek mondanak",
@@ -208,6 +230,12 @@ const hu: Dict = {
   },
   footer: { rights: "Minden jog fenntartva.", hours: "Nyitvatartás" },
   lang: "Nyelv",
+  theme: {
+    label: "Téma",
+    emerald: "Emerald",
+    noir: "Fekete",
+    chalk: "Fehér",
+  },
   menuOpen: "Menü megnyitása",
   menuClose: "Menü bezárása",
 };
@@ -218,6 +246,7 @@ const en: Dict = {
     about: "About",
     menu: "Menu",
     gallery: "Gallery",
+    events: "Events",
     reviews: "Reviews",
     visit: "Visit",
   },
@@ -279,6 +308,13 @@ const en: Dict = {
     prev: "Previous",
     next: "Next",
   },
+  event: {
+    kicker: "A moment",
+    title: "Music, people and a night at DOT.",
+    body: "A real moment from the bar atmosphere — the same photo shown with a thin black frame and without one.",
+    framed: "Framed",
+    clean: "No frame",
+  },
   reviews: {
     kicker: "Reviews",
     title: "What guests say",
@@ -313,6 +349,12 @@ const en: Dict = {
   },
   footer: { rights: "All rights reserved.", hours: "Opening hours" },
   lang: "Language",
+  theme: {
+    label: "Theme",
+    emerald: "Emerald",
+    noir: "Black",
+    chalk: "White",
+  },
   menuOpen: "Open menu",
   menuClose: "Close menu",
 };

@@ -9,7 +9,7 @@ export function Reviews() {
   return (
     <section id="reviews" className="px-5 py-24 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1500px]">
-        <SectionHead num="04" kicker={t.reviews.kicker} title={t.reviews.title} />
+        <SectionHead num="05" kicker={t.reviews.kicker} title={t.reviews.title} />
         <div className="mt-16 grid grid-cols-12 gap-6">
           <Reveal className="col-span-12 md:col-span-5">
             <p className="font-display text-[28vw] font-extrabold leading-[0.8] tracking-[-0.07em] text-primary md:text-[14vw]">

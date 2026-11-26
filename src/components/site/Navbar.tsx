@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 import { EASE } from "./ui";
 import { business } from "@/data/business";
 
-const ids = ["home", "about", "menu", "gallery", "reviews", "visit"] as const;
+const ids = ["home", "about", "menu", "gallery", "events", "reviews", "visit"] as const;
 
 export function Navbar() {
   const { t } = useLang();
@@ -37,7 +38,7 @@ export function Navbar() {
             href="#home"
             className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"
           >
-            <span aria-hidden className="size-3 rounded-full bg-primary" />
+            <img src="/dot-logo.png" alt="DOT Concept Bar" className="size-10 object-contain" />
             DOT
           </a>
           <ul className="hidden items-center gap-8 lg:flex">
@@ -53,6 +54,7 @@ export function Navbar() {
             <div className="hidden sm:block">
               <LanguageSwitcher />
             </div>
+            <ThemeSwitcher />
             <button
               onClick={() => setOpen(true)}
               aria-label={t.menuOpen}
@@ -77,7 +79,10 @@ export function Navbar() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-xl font-extrabold">DOT</span>
+              <span className="flex items-center gap-2 font-display text-xl font-extrabold">
+                <img src="/dot-logo.png" alt="DOT Concept Bar" className="size-10 object-contain" />
+                DOT
+              </span>
               <button
                 onClick={() => setOpen(false)}
                 aria-label={t.menuClose}
@@ -107,6 +112,9 @@ export function Navbar() {
             </ul>
             <div className="mt-10 border-t border-ivory/20 pt-6">
               <LanguageSwitcher />
+              <div className="mt-5">
+                <ThemeSwitcher />
+              </div>
             </div>
           </motion.div>
         )}
