@@ -34,7 +34,7 @@ export function Hero() {
           46.0988° N — 19.6651° E
         </motion.p>
 
-        <h1 className="relative col-span-12 mt-6 md:mt-2">
+        <h1 className="relative isolate col-span-12 mt-6 md:mt-2">
           <span className="sr-only">DOT Concept Bar — Subotica</span>
           <RealCoffeeBeans />
           <span aria-hidden className="relative z-[1] block overflow-hidden">
@@ -42,7 +42,7 @@ export function Hero() {
               className="block font-display text-[34vw] font-extrabold leading-[0.78] tracking-[-0.08em] md:text-[27vw]"
               initial={reduce ? false : { y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: reduce ? 0 : 1.2, ease: EASE, delay: reduce ? 0 : 0.15 }}
+              transition={{ duration: reduce ? 0 : 1.05, ease: EASE, delay: reduce ? 0 : 0.08 }}
             >
               DOT
             </motion.span>
@@ -53,7 +53,7 @@ export function Hero() {
             className="absolute z-[2] right-[4%] top-[8%] block aspect-square w-[22vw] rounded-full bg-dot-red md:right-[10%] md:w-[13vw]"
             initial={reduce ? false : { scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: reduce ? 0 : 1.1, ease: EASE, delay: reduce ? 0 : 0.7 }}
+            transition={{ duration: reduce ? 0 : 0.85, ease: EASE, delay: reduce ? 0 : 0.48 }}
           />
           <RealCoffeeBeans foreground />
         </h1>
@@ -80,7 +80,7 @@ export function Hero() {
             className="col-span-12 flex flex-wrap gap-3 md:col-span-4 md:justify-end"
             initial={init(0)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: reduce ? 0 : 1.4, duration: reduce ? 0 : 0.8, ease: EASE }}
+            transition={{ delay: reduce ? 0 : 0.85, duration: reduce ? 0 : 0.55, ease: EASE }}
           >
             <Magnetic href="#menu" className={btn.solid}>
               {t.hero.menu}

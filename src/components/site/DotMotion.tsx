@@ -1,47 +1,84 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useInView } from "motion/react";
 
-// Original photograph by Jeff Kubina, transparent cutout by Chiccodoro (CC BY-SA 2.0).
-// Reused at different static angles; see the visible footer credit and docs/RESEARCH.md.
-export const coffeeBeanPhoto = "https://upload.wikimedia.org/wikipedia/commons/5/55/Coffee_bean_transparent.png";
+// Four distinct beans cropped from Raysonho's real CC0 studio photograph.
+export const coffeeBeanPhoto =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CoffeeBeansWhiteBackground.jpg/2560px-CoffeeBeansWhiteBackground.jpg";
 
-const beans = [
-  [6, 12, -48, 0.98], [22, 2, 38, 0.74],
-  [35, 94, 112, 0.88], [48, 8, -17, 0.65],
-  [61, 96, 24, 1.04], [73, 0, -75, 0.76],
-  [90, 78, 68, 1.08], [97, 21, -35, 0.83],
+// Crop coordinates are normalized to a 1000 × 667 reference preview.
+// Hand-traced silhouettes remove the white background and original cast shadows.
+const crops = [
+  { x: 394, y: 357, w: 61, h: 53, outline: "polygon(4% 33%, 14% 18%, 30% 7%, 48% 3%, 64% 10%, 84% 27%, 96% 49%, 97% 69%, 85% 86%, 65% 96%, 44% 96%, 25% 85%, 9% 65%, 1% 48%)" },
+  { x: 497, y: 361, w: 80, h: 62, outline: "polygon(3% 60%, 10% 42%, 25% 23%, 47% 6%, 65% 1%, 82% 8%, 94% 24%, 98% 43%, 92% 64%, 77% 80%, 55% 94%, 32% 98%, 15% 87%, 4% 75%)" },
+  { x: 777, y: 250, w: 55, h: 50, outline: "polygon(3% 45%, 12% 25%, 29% 10%, 52% 3%, 73% 7%, 89% 23%, 97% 44%, 93% 63%, 81% 83%, 61% 95%, 43% 96%, 21% 85%, 6% 70%)" },
+  { x: 229, y: 357, w: 96, h: 58, outline: "polygon(2% 66%, 8% 46%, 23% 29%, 44% 13%, 64% 2%, 79% 4%, 92% 16%, 98% 37%, 94% 55%, 79% 70%, 62% 82%, 44% 94%, 23% 97%, 7% 89%)" },
 ] as const;
 
-/** Static photographic decoration, rendered on every page load, including refresh. */
+// Deliberately composed rather than randomized: independent direction, depth,
+// scale, angle and timing create a photographic still life around the wordmark.
+const beans = [
+  { crop: 3, x: 7, y: 6, angle: -30, size: 0.95, dx: -230, dy: -110, turn: -55, delay: 0.12, duration: 1.30, depth: 0.88 },
+  { crop: 0, x: 21, y: 0, angle: 35, size: 0.69, dx: -90, dy: -190, turn: 45, delay: 0.26, duration: 1.12, depth: 1.05 },
+  { crop: 1, x: 34, y: 91, angle: -42, size: 0.95, dx: -130, dy: 145, turn: -60, delay: 0.38, duration: 1.26, depth: 0.96 },
+  { crop: 2, x: 48, y: 5, angle: 24, size: 0.65, dx: 35, dy: -175, turn: 70, delay: 0.19, duration: 1.18, depth: 1.08 },
+  { crop: 0, x: 61, y: 92, angle: 73, size: 1.13, dx: 80, dy: 180, turn: -40, delay: 0.32, duration: 1.32, depth: 0.88 },
+  { crop: 1, x: 75, y: 2, angle: -68, size: 0.82, dx: 170, dy: -115, turn: 52, delay: 0.24, duration: 1.23, depth: 1.02 },
+  { crop: 2, x: 91, y: 79, angle: -32, size: 1.12, dx: 245, dy: 105, turn: 80, delay: 0.40, duration: 1.28, depth: 0.95 },
+  { crop: 3, x: 96, y: 17, angle: 52, size: 0.88, dx: 255, dy: -40, turn: -65, delay: 0.15, duration: 1.34, depth: 1.06 },
+] as const;
+
+function PhotographicBean({ bean }: { bean: (typeof beans)[number] }) {
+  const crop = crops[bean.crop];
+  return (
+    <span
+      className="dot-bean"
+      style={{
+        left: `${bean.x}%`,
+        top: `${bean.y}%`,
+        "--bean-angle": `${bean.angle}deg`,
+        "--bean-scale": bean.size,
+        "--bean-dx": `${bean.dx}px`,
+        "--bean-dy": `${bean.dy}px`,
+        "--bean-turn": `${bean.turn}deg`,
+        "--bean-delay": `${bean.delay}s`,
+        "--bean-duration": `${bean.duration}s`,
+        "--bean-depth": bean.depth,
+      } as CSSProperties}
+    >
+      <span
+        className="dot-bean-cutout"
+        style={{ aspectRatio: `${crop.w} / ${crop.h}`, clipPath: crop.outline }}
+      >
+        <img
+          src={coffeeBeanPhoto}
+          alt=""
+          width={2560}
+          height={1706}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+          draggable={false}
+          referrerPolicy="no-referrer"
+          style={{
+            width: `${100000 / crop.w}%`,
+            left: `${-100 * crop.x / crop.w}%`,
+            top: `${-100 * crop.y / crop.h}%`,
+          }}
+        />
+      </span>
+    </span>
+  );
+}
+
+/** Replays on every page mount without storage, timers or a blocking loader. */
 export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }) {
   return (
     <span
       aria-hidden="true"
       className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}
     >
-      {beans.map(([x, y, angle, scale], i) =>
-        i % 2 === (foreground ? 1 : 0) ? (
-          <img
-            key={i}
-            className="dot-bean"
-            src={coffeeBeanPhoto}
-            alt=""
-            width={1005}
-            height={1005}
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-            draggable={false}
-            referrerPolicy="no-referrer"
-            style={{
-              left: `${x}%`,
-              top: `${y}%`,
-              "--bean-angle": `${angle}deg`,
-              "--bean-scale": scale,
-              "--bean-flip": i % 3 === 0 ? -1 : 1,
-            } as CSSProperties}
-          />
-        ) : null,
+      {beans.map((bean, i) =>
+        i % 2 === (foreground ? 1 : 0) ? <PhotographicBean key={i} bean={bean} /> : null,
       )}
     </span>
   );

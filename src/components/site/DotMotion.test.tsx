@@ -9,10 +9,12 @@ afterEach(cleanup);
 describe("DOT illustration motion", () => {
   it("renders eight real photographic beans across both layers", () => {
     const { container } = render(<><RealCoffeeBeans/><RealCoffeeBeans foreground/></>);
-    const photos = [...container.querySelectorAll<HTMLImageElement>("img.dot-bean")];
+    const photos = [...container.querySelectorAll<HTMLImageElement>(".dot-bean img")];
     expect(photos).toHaveLength(8);
-    expect(photos.every(photo => photo.src.includes("Coffee_bean_transparent.png") && photo.alt === "")).toBe(true);
+    expect(photos.every(photo => photo.src.includes("CoffeeBeansWhiteBackground.jpg") && photo.alt === "")).toBe(true);
     expect(container.querySelector(".dot-bean-layer svg")).toBeNull();
+    const masks = [...container.querySelectorAll<HTMLElement>(".dot-bean-cutout")];
+    expect(new Set(masks.map(mask => mask.style.clipPath)).size).toBe(4);
     expect(sessionStorage.getItem("dot-beans-seen")).toBeNull();
   });
 
