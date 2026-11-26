@@ -5,6 +5,7 @@ import { business } from "@/data/business";
 import { Magnetic, Reveal, SectionHead, btn } from "./ui";
 import { OpeningHours } from "./OpeningHours";
 import { MapVisual } from "./MapVisual";
+import { SectionMotion } from "./DotMotion";
 
 export function Visit() {
   const { t } = useLang();
@@ -68,9 +69,10 @@ export function Visit() {
               </ul>
             </Reveal>
             <Reveal>
-              <h3 id="hours" className="kicker mb-3 text-muted-foreground">
-                {t.visit.hours}
-              </h3>
+              <div className="mb-3 flex items-center justify-between gap-3">
+                <h3 id="hours" className="kicker text-muted-foreground">{t.visit.hours}</h3>
+                <SectionMotion kind="hours" small />
+              </div>
               <OpeningHours />
             </Reveal>
             <div className="flex flex-wrap gap-3">

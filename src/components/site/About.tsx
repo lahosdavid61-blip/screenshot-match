@@ -13,8 +13,8 @@ export function About() {
         <div className="mt-16 grid grid-cols-12 gap-6 md:mt-24">
           <motion.div
             className="group col-span-12 aspect-[4/5] md:col-span-6 md:col-start-2"
-            initial={reduce ? false : { clipPath: "inset(100% 0 0 0)" }}
-            whileInView={{ clipPath: "inset(0% 0 0 0)" }}
+            initial={reduce ? false : { clipPath: "circle(0% at 50% 50%)" }}
+            whileInView={{ clipPath: "circle(75% at 50% 50%)" }}
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 1.3, ease: EASE }}
           >

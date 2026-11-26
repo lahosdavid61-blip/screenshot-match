@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
 import { EASE, Magnetic, btn } from "./ui";
+import { CoffeeBeanOrbit } from "./DotMotion";
 
 export function Hero() {
   const { t } = useLang();
@@ -20,7 +21,7 @@ export function Hero() {
           className="kicker col-span-6"
           initial={init(0)}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8, ease: EASE }}
+          transition={{ delay: reduce ? 0 : 0.9, duration: reduce ? 0 : 0.8, ease: EASE }}
         >
           {t.hero.loc}
         </motion.p>
@@ -28,19 +29,20 @@ export function Hero() {
           className="kicker col-span-6 text-right"
           initial={init(0)}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8, ease: EASE }}
+          transition={{ delay: reduce ? 0 : 1, duration: reduce ? 0 : 0.8, ease: EASE }}
         >
           46.0988° N — 19.6651° E
         </motion.p>
 
         <h1 className="relative col-span-12 mt-6 md:mt-2">
           <span className="sr-only">DOT Concept Bar — Subotica</span>
-          <span aria-hidden className="block overflow-hidden">
+          <CoffeeBeanOrbit />
+          <span aria-hidden className="relative z-[1] block overflow-hidden">
             <motion.span
               className="block font-display text-[34vw] font-extrabold leading-[0.78] tracking-[-0.08em] md:text-[27vw]"
               initial={reduce ? false : { y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: 1.2, ease: EASE, delay: 0.15 }}
+              transition={{ duration: reduce ? 0 : 1.2, ease: EASE, delay: reduce ? 0 : 0.15 }}
             >
               DOT
             </motion.span>
@@ -48,11 +50,12 @@ export function Hero() {
           <motion.span
             aria-hidden
             style={{ y }}
-            className="absolute right-[4%] top-[8%] block aspect-square w-[22vw] rounded-full bg-dot-red md:right-[10%] md:w-[13vw]"
+            className="absolute z-[2] right-[4%] top-[8%] block aspect-square w-[22vw] rounded-full bg-dot-red md:right-[10%] md:w-[13vw]"
             initial={reduce ? false : { scale: 0 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 1.1, ease: EASE, delay: 0.7 }}
+            transition={{ duration: reduce ? 0 : 1.1, ease: EASE, delay: reduce ? 0 : 0.7 }}
           />
+          <CoffeeBeanOrbit foreground />
         </h1>
 
         <div className="col-span-12 mt-6 grid grid-cols-12 gap-4 border-t border-border pt-6">
@@ -61,7 +64,7 @@ export function Hero() {
             className="col-span-12 font-display text-2xl font-bold uppercase tracking-[0.3em] md:col-span-4 md:text-3xl"
             initial={init(0)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1, duration: 0.8, ease: EASE }}
+            transition={{ delay: reduce ? 0 : 1.1, duration: reduce ? 0 : 0.8, ease: EASE }}
           >
             {t.hero.sub}
           </motion.p>
@@ -69,7 +72,7 @@ export function Hero() {
             className="col-span-12 max-w-md text-xl italic leading-snug md:col-span-4 md:text-2xl"
             initial={init(0)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.25, duration: 0.8, ease: EASE }}
+            transition={{ delay: reduce ? 0 : 1.25, duration: reduce ? 0 : 0.8, ease: EASE }}
           >
             {t.hero.line}
           </motion.p>
@@ -77,7 +80,7 @@ export function Hero() {
             className="col-span-12 flex flex-wrap gap-3 md:col-span-4 md:justify-end"
             initial={init(0)}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8, ease: EASE }}
+            transition={{ delay: reduce ? 0 : 1.4, duration: reduce ? 0 : 0.8, ease: EASE }}
           >
             <Magnetic href="#menu" className={btn.solid}>
               {t.hero.menu}

@@ -8,6 +8,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./components/site/dot-motion.css";
 
 @custom-variant dark (&:is(.dark *));
 
