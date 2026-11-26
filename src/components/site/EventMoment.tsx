@@ -16,38 +16,20 @@ export function EventMoment() {
         <Reveal className="mt-8 max-w-xl">
           <p className="text-lg leading-relaxed text-ivory/70 md:text-xl">{t.event.body}</p>
         </Reveal>
-        <div className="mt-14 grid gap-8 md:grid-cols-2">
+        <div className="mt-14 max-w-3xl">
           <motion.figure
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.9, ease: EASE }}
           >
-            <div className="border-4 border-black bg-black p-1">
-              <img
-                src="/dot-event-upscaled.png"
-                alt={t.event.title}
-                className="aspect-[4/5] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <figcaption className="kicker mt-4 text-ivory/55">01 — {t.event.framed}</figcaption>
-          </motion.figure>
-          <motion.figure
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.08 }}
-          >
-            <div>
-              <img
-                src="/dot-event-upscaled.png"
-                alt={t.event.title}
-                className="aspect-[4/5] w-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <figcaption className="kicker mt-4 text-ivory/55">02 — {t.event.clean}</figcaption>
+            <img
+              src="/dot-event-upscaled.png"
+              alt={t.event.title}
+              className="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+            />
+            <figcaption className="kicker mt-4 text-ivory/55">{t.event.caption}</figcaption>
           </motion.figure>
         </div>
       </div>

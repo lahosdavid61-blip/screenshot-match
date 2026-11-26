@@ -48,7 +48,7 @@ export function Hero() {
           <motion.span
             aria-hidden
             style={{ y }}
-            className="absolute right-[4%] top-[8%] block aspect-square w-[22vw] rounded-full bg-primary md:right-[10%] md:w-[13vw]"
+            className="absolute right-[4%] top-[8%] block aspect-square w-[22vw] rounded-full bg-dot-red md:right-[10%] md:w-[13vw]"
             initial={reduce ? false : { scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ duration: 1.1, ease: EASE, delay: 0.7 }}

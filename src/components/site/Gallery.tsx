@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
 import { gallery } from "@/data/gallery";
-import { EASE, PhotoSlot, SectionHead } from "./ui";
+import { EASE, SectionHead } from "./ui";
 import { Lightbox } from "./Lightbox";
 
 export function Gallery() {
@@ -25,7 +25,12 @@ export function Gallery() {
               viewport={{ once: true, margin: "-10%" }}
               transition={{ duration: 1.1, ease: EASE, delay: (i % 3) * 0.08 }}
             >
-              <PhotoSlot label={t.gallery.shots[g.key]} note={`0${i + 1} — ${t.gallery.ph}`} />
+              <img
+                src={g.src}
+                alt={t.gallery.shots[g.key]}
+                className="h-full w-full object-cover grayscale-[8%] transition duration-700 group-hover:scale-105"
+                loading={i > 1 ? "lazy" : "eager"}
+              />
             </motion.button>
           ))}
         </div>

@@ -38,7 +38,11 @@ export function Navbar() {
             href="#home"
             className="flex items-center gap-2 font-display text-xl font-extrabold tracking-tight"
           >
-            <img src="/dot-logo.png" alt="DOT Concept Bar" className="size-10 object-contain" />
+            <img
+              src="/dot-logo.png"
+              alt="DOT Concept Bar"
+              className="brand-logo size-10 object-contain"
+            />
             DOT
           </a>
           <ul className="hidden items-center gap-8 lg:flex">
@@ -80,7 +84,11 @@ export function Navbar() {
           >
             <div className="flex items-center justify-between">
               <span className="flex items-center gap-2 font-display text-xl font-extrabold">
-                <img src="/dot-logo.png" alt="DOT Concept Bar" className="size-10 object-contain" />
+                <img
+                  src="/dot-logo.png"
+                  alt="DOT Concept Bar"
+                  className="brand-logo size-10 object-contain"
+                />
                 DOT
               </span>
               <button

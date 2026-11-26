@@ -72,9 +72,8 @@ const sr = {
   event: {
     kicker: "Trenutak",
     title: "Muzika, ljudi i noć u DOT-u.",
-    body: "Jedan zabeležen trenutak iz atmosfere bara — pogledajte istu fotografiju sa tankim crnim okvirom i bez njega.",
-    framed: "Sa okvirom",
-    clean: "Bez okvira",
+    body: "Jedan zabeležen trenutak iz atmosfere bara — muzika, razgovori i čaše koje ostaju do kasno.",
+    caption: "Atmosfera DOT-a, posle zalaska sunca",
   },
   reviews: {
     kicker: "Utisci",
@@ -192,9 +191,8 @@ const hu: Dict = {
   event: {
     kicker: "Pillanat",
     title: "Zene, emberek és egy este a DOT-ban.",
-    body: "Egy valódi pillanat a bár hangulatából — ugyanaz a fotó vékony fekete kerettel és keret nélkül.",
-    framed: "Keretben",
-    clean: "Keret nélkül",
+    body: "Egy valódi pillanat a bár hangulatából — zene, beszélgetések és poharak egészen estig.",
+    caption: "A DOT hangulata napnyugta után",
   },
   reviews: {
     kicker: "Vélemények",
@@ -311,9 +309,8 @@ const en: Dict = {
   event: {
     kicker: "A moment",
     title: "Music, people and a night at DOT.",
-    body: "A real moment from the bar atmosphere — the same photo shown with a thin black frame and without one.",
-    framed: "Framed",
-    clean: "No frame",
+    body: "A real moment from the bar atmosphere — music, conversation and glasses that stay late into the night.",
+    caption: "The DOT mood after sunset",
   },
   reviews: {
     kicker: "Reviews",

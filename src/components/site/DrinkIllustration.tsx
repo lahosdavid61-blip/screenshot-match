@@ -166,14 +166,22 @@ export function DrinkIllustration({ category, label }: { category: MenuCategory;
           aria-hidden
         />
       </div>
-      <svg
-        viewBox="0 0 210 175"
-        className="drink-float mx-auto mt-2 h-auto w-full max-w-[260px]"
-        role="img"
-        aria-label={label}
-      >
-        <Illustration />
-      </svg>
+      {category === "coffee" ? (
+        <img
+          src="/dot-coffee-clean.png"
+          alt={label}
+          className="drink-float mx-auto mt-2 h-[220px] w-full max-w-[260px] object-cover object-center"
+        />
+      ) : (
+        <svg
+          viewBox="0 0 210 175"
+          className="drink-float mx-auto mt-2 h-auto w-full max-w-[260px]"
+          role="img"
+          aria-label={label}
+        >
+          <Illustration />
+        </svg>
+      )}
     </div>
   );
 }

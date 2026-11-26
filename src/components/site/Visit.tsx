@@ -4,6 +4,7 @@ import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
 import { Magnetic, Reveal, SectionHead, btn } from "./ui";
 import { OpeningHours } from "./OpeningHours";
+import { MapVisual } from "./MapVisual";
 
 export function Visit() {
   const { t } = useLang();
@@ -22,7 +23,7 @@ export function Visit() {
   return (
     <section id="visit" className="px-5 py-24 md:px-10 md:py-40">
       <div className="mx-auto max-w-[1500px]">
-        <SectionHead num="05" kicker={t.visit.kicker} title={t.visit.title} />
+        <SectionHead num="06" kicker={t.visit.kicker} title={t.visit.title} />
         <div className="mt-16 grid grid-cols-12 gap-8">
           <div className="col-span-12 space-y-12 md:col-span-5">
             <Reveal>
@@ -82,14 +83,7 @@ export function Visit() {
             </div>
           </div>
           <Reveal className="col-span-12 md:col-span-6 md:col-start-7">
-            <div className="relative aspect-[4/5] w-full overflow-hidden border border-border md:aspect-auto md:h-full md:min-h-[560px]">
-              <iframe
-                title="DOT Concept Bar map"
-                src={b.mapEmbed}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full grayscale contrast-125"
-              />
-            </div>
+            <MapVisual />
           </Reveal>
         </div>
       </div>

@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
 import { gallery } from "@/data/gallery";
-import { PhotoSlot } from "./ui";
 
 export function Lightbox({
   index,
@@ -67,7 +66,11 @@ export function Lightbox({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <PhotoSlot label={t.gallery.shots[shot.key]} note={t.gallery.ph} />
+              <img
+                src={shot.src}
+                alt={t.gallery.shots[shot.key]}
+                className="h-full w-full object-contain"
+              />
             </motion.div>
           </div>
           <div className="flex justify-between">

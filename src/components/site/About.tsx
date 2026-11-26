@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
-import { Dot, EASE, PhotoSlot, Reveal, SectionHead } from "./ui";
+import { Dot, EASE, Reveal, SectionHead } from "./ui";
 
 export function About() {
   const { t } = useLang();
@@ -18,7 +18,11 @@ export function About() {
             viewport={{ once: true, margin: "-15%" }}
             transition={{ duration: 1.3, ease: EASE }}
           >
-            <PhotoSlot label={t.gallery.shots.interior} note={t.gallery.ph} />
+            <img
+              src="/dot-street-table-clean.png"
+              alt={t.gallery.shots.interior}
+              className="h-full w-full object-cover"
+            />
           </motion.div>
           <div className="col-span-12 flex flex-col justify-end md:col-span-4 md:col-start-9">
             <Reveal>
