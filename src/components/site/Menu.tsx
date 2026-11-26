@@ -6,6 +6,7 @@ import { menu, menuCategories, type MenuCategory } from "@/data/menu";
 import { business } from "@/data/business";
 import { EASE, Magnetic, SectionHead, btn } from "./ui";
 import { MenuItem } from "./MenuItem";
+import { DrinkIllustration } from "./DrinkIllustration";
 
 type Moment = "morning" | "afternoon" | "friends" | "break";
 
@@ -32,6 +33,8 @@ export function Menu() {
       return matchesCategory && matchesMoment && matchesQuery;
     });
   }, [cat, moment, query]);
+  const illustrationCategory: MenuCategory =
+    cat === "all" ? (moment ? momentCategories[moment][0] : "coffee") : cat;
 
   const chooseMoment = (value: Moment) => {
     setMoment(value);
@@ -72,6 +75,18 @@ export function Menu() {
                 </button>
               ))}
             </div>
+            <motion.div
+              key={illustrationCategory}
+              initial={{ opacity: 0, y: 10, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.55, ease: EASE }}
+              className="mt-8"
+            >
+              <DrinkIllustration
+                category={illustrationCategory}
+                label={t.menu.cats[illustrationCategory]}
+              />
+            </motion.div>
             <div className="mt-10 border-t border-ivory/20 pt-6">
               <p className="kicker mb-4 text-ivory/50">{t.menu.moments}</p>
               <div className="flex flex-wrap gap-2 md:flex-col md:items-start">
