@@ -51,3 +51,12 @@ See the complete research package at `/home/ubuntu/DOT-CONCEPT-BAR-RESEARCH.zip`
 - License: https://creativecommons.org/licenses/by-sa/2.0/ (CC BY-SA 2.0).
 - Original transparent image: 1005 × 1005 pixels, https://upload.wikimedia.org/wikipedia/commons/5/55/Coffee_bean_transparent.png
 - Use: generic decorative coffee bean photograph, not claimed to be taken at DOT. Same unmodified file displayed with different static CSS rotations/scales. Visible attribution is provided in the footer. Image is externally hosted; no binary copy was available in the editing environment.
+
+
+## Cinematic hero photograph (replaces previous decorative bean)
+- Source: https://commons.wikimedia.org/wiki/File:CoffeeBeansWhiteBackground.jpg
+- Author: Raysonho @ Open Grid Scheduler / Grid Engine, 11 April 2015.
+- License: CC0 1.0, https://creativecommons.org/publicdomain/zero/1.0/
+- Original: 4367 × 2911, https://upload.wikimedia.org/wikipedia/commons/8/81/CoffeeBeansWhiteBackground.jpg
+- Used preview: 2560 × 1706, https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CoffeeBeansWhiteBackground.jpg/2560px-CoffeeBeansWhiteBackground.jpg
+- Both original and preview were visually inspected. Four separated beans were traced and cropped with CSS; warm brightness/contrast correction is applied in the browser. Generic decorative imagery, not a photograph of DOT products. External hosting remains necessary in this editing environment.

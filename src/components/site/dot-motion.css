@@ -1,24 +1,65 @@
-/* DOT photographic hero and original, finite SVG motion for other sections. */
+/* DOT cinematic photographic hero; other sections retain their SVG motion. */
 .dot-bean-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
   overflow: visible;
+  perspective: 700px;
 }
 .dot-bean-back { z-index: 0; }
 .dot-bean-front { z-index: 3; }
 .dot-bean {
   position: absolute;
   display: block;
-  width: clamp(35px, 6.3vw, 112px);
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: contain;
-  transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale)) scaleX(var(--bean-flip));
-  filter: drop-shadow(2px 4px 3px oklch(0.12 0.035 45 / .28));
+  width: clamp(36px, 6.8vw, 118px);
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale));
+  filter: drop-shadow(2px 5px 5px oklch(0.12 0.03 45 / .36));
   user-select: none;
-  animation: none;
-  transition: none;
+  --bean-travel: 1;
+  opacity: 0;
+}
+.dot-bean-ready {
+  animation: dot-cinematic-arrival var(--bean-duration) cubic-bezier(.19, 1, .22, 1) var(--bean-delay) both;
+}
+.dot-bean-cutout {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+.dot-bean-cutout img {
+  position: absolute;
+  display: block;
+  max-width: none;
+  height: auto;
+  filter: brightness(1.20) contrast(1.06) saturate(1.12);
+}
+.dot-bean-back .dot-bean-cutout img { filter: brightness(1.12) contrast(1.04) saturate(1.08); }
+@keyframes dot-cinematic-arrival {
+  0% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--bean-dx) * var(--bean-travel)), calc(-50% + var(--bean-dy) * var(--bean-travel))) rotate(calc(var(--bean-angle) + var(--bean-turn))) rotateY(-24deg) scale(calc(var(--bean-scale) * var(--bean-depth) * .64));
+    filter: blur(5px) drop-shadow(2px 7px 6px oklch(0.12 0.03 45 / .15));
+  }
+  28% { opacity: .96; }
+  67% {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--bean-dx) * -.035 * var(--bean-travel)), calc(-50% + var(--bean-dy) * -.055 * var(--bean-travel))) rotate(calc(var(--bean-angle) - 4deg)) rotateY(5deg) scale(calc(var(--bean-scale) * 1.025));
+    filter: blur(.25px) drop-shadow(2px 6px 5px oklch(0.12 0.03 45 / .30));
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale));
+    filter: blur(0) drop-shadow(2px 5px 5px oklch(0.12 0.03 45 / .36));
+  }
+}
+@media (max-width: 640px) {
+  .dot-bean { --bean-travel: .45; width: clamp(30px, 8.2vw, 56px); }
+  .dot-bean:nth-child(n+4) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot-bean-ready { animation: none; opacity: 1; }
 }
 
 .dot-section-art { flex: none; display: block; align-self: flex-end; width: clamp(70px, 11vw, 134px); color: currentColor; opacity: .92; pointer-events: none; }
@@ -82,7 +123,6 @@
 @keyframes dot-ice-in { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes dot-lemon-land { 0% { opacity: 0; transform: translate(35px, -46px) rotate(-135deg) scale(.75); } 45% { opacity: 1; } 78% { transform: translate(0, 2px) rotate(8deg) scale(1); } 100% { opacity: 1; transform: translate(0, 0) rotate(0) scale(1); } }
 @media (max-width: 640px) {
-  .dot-bean:nth-child(n+4) { display: none; }
   .dot-section-art { width: 64px; }
   .dot-section-art-small { width: 38px; }
 }
