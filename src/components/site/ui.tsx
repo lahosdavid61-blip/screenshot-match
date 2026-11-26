@@ -1,6 +1,9 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useRef, type ReactNode, type MouseEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { SectionMotion, type SectionKind } from "./DotMotion";
+
+const sectionArt: Partial<Record<string, SectionKind>> = { "01": "about", "03": "gallery", "04": "events", "05": "reviews", "06": "visit" };
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -54,11 +57,14 @@ export function SectionHead({
           <Dot className="size-2" />
           {kicker}
         </p>
-        <Reveal>
-          <h2 className="mt-4 text-4xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
-            {title}
-          </h2>
-        </Reveal>
+        <div className="flex items-end justify-between gap-3">
+          <Reveal className="min-w-0 flex-1">
+            <h2 className="mt-4 break-words text-4xl font-extrabold leading-[0.95] tracking-tight md:text-7xl">
+              {title}
+            </h2>
+          </Reveal>
+          {sectionArt[num] && <SectionMotion kind={sectionArt[num]} />}
+        </div>
       </div>
     </header>
   );
@@ -86,7 +92,7 @@ export function Magnetic({
   const ref = useRef<HTMLAnchorElement>(null);
   const move = (e: MouseEvent) => {
     const el = ref.current;
-    if (!el || window.matchMedia("(pointer: coarse)").matches) return;
+    if (!el || window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return;
     const r = el.getBoundingClientRect();
     el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * 0.15}px, ${(e.clientY - r.top - r.height / 2) * 0.25}px)`;
   };

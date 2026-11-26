@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Search, X } from "lucide-react";
 import { useLang } from "@/i18n/LangContext";
 import { menu, menuCategories, type MenuCategory } from "@/data/menu";
@@ -19,6 +19,7 @@ const momentCategories: Record<Moment, MenuCategory[]> = {
 
 export function Menu() {
   const { t } = useLang();
+  const reduce = useReducedMotion();
   const [cat, setCat] = useState<MenuCategory | "all">("all");
   const [query, setQuery] = useState("");
   const [moment, setMoment] = useState<Moment | null>(null);
@@ -80,15 +81,15 @@ export function Menu() {
               ))}
             </div>
             <motion.div
-              key={illustrationCategory}
-              initial={{ opacity: 0, y: 10, scale: 0.97 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.55, ease: EASE }}
+              key={`${cat}-${moment ?? "none"}-${illustrationCategory}`}
+              initial={reduce ? false : { opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: reduce ? 0 : 0.25, ease: EASE }}
               className="mt-8"
             >
               <DrinkIllustration
                 category={illustrationCategory}
-                label={t.menu.cats[illustrationCategory]}
+                label={cat === "all" && !moment ? t.menu.all : t.menu.cats[illustrationCategory]}
                 {...(cat === "all" && !moment ? { variant: "menu" as const } : {})}
               />
             </motion.div>
@@ -140,11 +141,11 @@ export function Menu() {
                 {items.map((item, index) => (
                   <motion.li
                     key={item.id}
-                    layout
-                    initial={{ opacity: 0, y: 14 }}
+                    layout={!reduce}
+                    initial={reduce ? false : { opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.45, ease: EASE, delay: index * 0.04 }}
+                    transition={{ duration: reduce ? 0 : 0.35, ease: EASE, delay: reduce ? 0 : Math.min(index * 0.035, 0.28) }}
                   >
                     <MenuItem
                       item={item}
