@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- All business facts live in typed files under `src/data/`; components never hardcode facts — keeps verified info in one place.
+- UI text lives in `src/i18n/dict.ts` (sr default, hu, en); every visible string goes through it.
+- `motion` is the only animation library.
+- Never display unverified prices, hours, reviews or photos; log sources in `docs/RESEARCH.md`.

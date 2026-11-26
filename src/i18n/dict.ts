@@ -1,0 +1,44 @@
+export type Lang = "sr" | "hu" | "en";
+export const langs: Lang[] = ["sr", "hu", "en"];
+
+const sr = {
+  nav: { home: "Početna", about: "O nama", menu: "Meni", gallery: "Galerija", reviews: "Utisci", visit: "Dođi" },
+  hero: { sub: "Concept Bar", loc: "Subotica / Srbija", line: "Kafa ujutru, pivo uveče. Mala tačka u centru grada.", menu: "Pogledaj meni", dir: "Kako do nas", scroll: "Skroluj" },
+  about: { kicker: "O nama", title: "Dizajn, ljudi i dobro piće — na jednom mestu.", body: "DOT je urbani concept bar u centru Subotice, nekoliko koraka od Gradske kuće. Moderan enterijer, opuštena atmosfera i pažljivo složena karta pića: od jutarnje kafe do koktela i vina uveče.", facts: ["Centar grada, kod Gradske kuće", "Besplatan Wi-Fi", "Povremeno živa muzika"] },
+  menu: { kicker: "Meni", title: "Šta se pije", all: "Sve", note: "Cene i kompletnu kartu proveri u baru ili nam piši na Instagramu.", ask: "Pitaj za cenu", cats: { coffee: "Kafa", beer: "Pivo", cocktails: "Kokteli", wine: "Vino", soft: "Bezalkoholno" } },
+  gallery: { kicker: "Galerija", title: "Unutra", ph: "Fotografija uskoro", shots: { interior: "Enterijer", bar: "Šank", facade: "Ulaz", drinks: "Pića", detail: "Detalji", evening: "Veče u DOT-u" }, close: "Zatvori", prev: "Prethodna", next: "Sledeća" },
+  reviews: { kicker: "Utisci", title: "Šta kažu gosti", of: "od", count: "ocena na Google-u", read: "Pročitaj recenzije", themes: { service: "odlična usluga", atmosphere: "prijatna atmosfera", music: "živa muzika", location: "sjajna lokacija", staff: "ljubazno osoblje" }, src: "Najčešće teme u recenzijama" },
+  social: { kicker: "Instagram", title: "Šta je novo — pratite nas.", cta: "@dotconceptbar" },
+  visit: { kicker: "Dođi", title: "Vidimo se u DOT-u", address: "Adresa", contact: "Kontakt", hours: "Radno vreme", hoursTbd: "Radno vreme uskoro — pozovite nas ili proverite Instagram.", open: "Otvoreno", closed: "Zatvoreno", call: "Pozovi", mail: "Pošalji email", dir: "Kako do nas", days: ["Nedelja", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"] },
+  footer: { rights: "Sva prava zadržana.", hours: "Radno vreme" },
+  lang: "Jezik", menuOpen: "Otvori meni", menuClose: "Zatvori meni",
+};
+type Dict = typeof sr;
+
+const hu: Dict = {
+  nav: { home: "Kezdőlap", about: "Rólunk", menu: "Itallap", gallery: "Galéria", reviews: "Vélemények", visit: "Látogass el" },
+  hero: { sub: "Concept Bar", loc: "Szabadka / Szerbia", line: "Reggel kávé, este sör. Egy kis pont a belváros szívében.", menu: "Itallap", dir: "Útvonal", scroll: "Görgess" },
+  about: { kicker: "Rólunk", title: "Design, emberek és jó italok — egy helyen.", body: "A DOT egy városi concept bar Szabadka belvárosában, néhány lépésre a Városházától. Modern belső tér, laza hangulat és gondosan összeállított itallap: a reggeli kávétól az esti koktélokig és borokig.", facts: ["Belváros, a Városháza mellett", "Ingyenes Wi-Fi", "Időnként élő zene"] },
+  menu: { kicker: "Itallap", title: "Mit iszunk", all: "Mind", note: "Az árakat és a teljes kínálatot kérdezd a pultnál vagy írj nekünk Instagramon.", ask: "Ár a helyszínen", cats: { coffee: "Kávé", beer: "Sör", cocktails: "Koktélok", wine: "Bor", soft: "Alkoholmentes" } },
+  gallery: { kicker: "Galéria", title: "Bent", ph: "Fotó hamarosan", shots: { interior: "Belső tér", bar: "Pult", facade: "Bejárat", drinks: "Italok", detail: "Részletek", evening: "Este a DOT-ban" }, close: "Bezárás", prev: "Előző", next: "Következő" },
+  reviews: { kicker: "Vélemények", title: "Amit a vendégek mondanak", of: "/", count: "értékelés a Google-on", read: "Vélemények olvasása", themes: { service: "remek kiszolgálás", atmosphere: "hangulatos hely", music: "élő zene", location: "jó elhelyezkedés", staff: "kedves személyzet" }, src: "Leggyakoribb témák a véleményekben" },
+  social: { kicker: "Instagram", title: "Újdonságok — kövess minket.", cta: "@dotconceptbar" },
+  visit: { kicker: "Látogass el", title: "Találkozzunk a DOT-ban", address: "Cím", contact: "Kapcsolat", hours: "Nyitvatartás", hoursTbd: "A nyitvatartás hamarosan — hívj minket vagy nézd meg Instagramon.", open: "Nyitva", closed: "Zárva", call: "Hívás", mail: "E-mail", dir: "Útvonal", days: ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"] },
+  footer: { rights: "Minden jog fenntartva.", hours: "Nyitvatartás" },
+  lang: "Nyelv", menuOpen: "Menü megnyitása", menuClose: "Menü bezárása",
+};
+
+const en: Dict = {
+  nav: { home: "Home", about: "About", menu: "Menu", gallery: "Gallery", reviews: "Reviews", visit: "Visit" },
+  hero: { sub: "Concept Bar", loc: "Subotica / Serbia", line: "Coffee in the morning, beer at night. A small dot in the city centre.", menu: "View menu", dir: "Get directions", scroll: "Scroll" },
+  about: { kicker: "About", title: "Design, people and good drinks — in one place.", body: "DOT is an urban concept bar in central Subotica, a few steps from City Hall. A modern interior, a relaxed crowd and a considered drinks list: from morning coffee to cocktails and wine in the evening.", facts: ["City centre, by City Hall", "Free Wi-Fi", "Live music now and then"] },
+  menu: { kicker: "Menu", title: "What we pour", all: "All", note: "Ask at the bar for prices and the full list, or message us on Instagram.", ask: "Price at the bar", cats: { coffee: "Coffee", beer: "Beer", cocktails: "Cocktails", wine: "Wine", soft: "Non-alcoholic" } },
+  gallery: { kicker: "Gallery", title: "Inside", ph: "Photo coming soon", shots: { interior: "Interior", bar: "The bar", facade: "Entrance", drinks: "Drinks", detail: "Details", evening: "Evening at DOT" }, close: "Close", prev: "Previous", next: "Next" },
+  reviews: { kicker: "Reviews", title: "What guests say", of: "out of", count: "ratings on Google", read: "Read the reviews", themes: { service: "great service", atmosphere: "cosy atmosphere", music: "live music", location: "great location", staff: "friendly staff" }, src: "Most mentioned in reviews" },
+  social: { kicker: "Instagram", title: "What's new — follow along.", cta: "@dotconceptbar" },
+  visit: { kicker: "Visit", title: "See you at DOT", address: "Address", contact: "Contact", hours: "Opening hours", hoursTbd: "Hours coming soon — call us or check Instagram.", open: "Open now", closed: "Closed", call: "Call", mail: "Email", dir: "Get directions", days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"] },
+  footer: { rights: "All rights reserved.", hours: "Opening hours" },
+  lang: "Language", menuOpen: "Open menu", menuClose: "Close menu",
+};
+
+export const dict: Record<Lang, Dict> = { sr, hu, en };
