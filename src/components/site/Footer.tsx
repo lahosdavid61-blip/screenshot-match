@@ -48,7 +48,7 @@ export function Footer() {
           </p>
           <motion.span
             aria-hidden
-            className="mb-[3vw] ml-[1vw] block aspect-square w-[7vw] rounded-full bg-primary"
+            className="mb-[3vw] ml-[1vw] block aspect-square w-[7vw] rounded-full bg-dot-red"
             initial={reduce ? false : { scale: 0 }}
             whileInView={{ scale: 1 }}
             viewport={{ once: true }}

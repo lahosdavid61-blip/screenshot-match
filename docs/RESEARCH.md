@@ -30,6 +30,7 @@ The research observed public image references, including 53 Restaurant Guru phot
 - [Visit Subotica — Hungarian](https://visitsubotica.rs/hu/turisticka-ponuda//kavezok/dot-concept-bar-3/)
 - [Google Maps place profile](https://www.google.com/maps/place/DOT+CONCEPT+BAR/@46.0988554,19.6651161,17z/data=!3m1!4b1!4m6!3m5!1s0x474366cefaacc959%3A0x55c02a9a4fa73284!8m2!3d46.0988554!4d19.6651161!16s%2Fg%2F11bws8bz11)
 - [Restaurant Guru](https://restaurantguru.com/DOT-CONCEPT-BARandstore-Subotica)
+- [Kupci.com public reviews](https://kupci.com/rs/recenzije/dot-concept-bar)
 - [Kafici.rs](https://kafici.rs/subotica/dot-concept-bar/)
 - [Subotica.com local album](https://www.subotica.com/fotografije/dot-concept-bar-noc-muzeja-2024-treserica-market-id79528.html)
 

@@ -1,6 +1,6 @@
 import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
-import { reviewThemes } from "@/data/reviews";
+import { onlineReviewsSource, reviewThemes } from "@/data/reviews";
 import { Magnetic, Reveal, SectionHead, btn } from "./ui";
 
 export function Reviews() {
@@ -18,9 +18,12 @@ export function Reviews() {
             <p className="mt-6 font-display text-lg">
               {t.reviews.of} 5 — {r.count} {t.reviews.count}
             </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Magnetic href={business.mapsSearch} external className={btn.line}>
                 {t.reviews.read}
+              </Magnetic>
+              <Magnetic href={business.mapsSearch} external className={btn.solid}>
+                {t.reviews.google}
               </Magnetic>
             </div>
           </Reveal>
@@ -39,6 +42,27 @@ export function Reviews() {
             <p className="mt-4 text-sm text-muted-foreground">
               {r.source} rating · review themes via Restaurant Guru · {r.checked}
             </p>
+            <div className="mt-14">
+              <p className="kicker text-muted-foreground">{t.reviews.online}</p>
+              <div className="mt-5 grid gap-4 md:grid-cols-3">
+                {t.reviews.quotes.map((quote) => (
+                  <blockquote
+                    key={quote}
+                    className="border border-border p-5 text-lg italic leading-snug"
+                  >
+                    “{quote}”
+                  </blockquote>
+                ))}
+              </div>
+              <a
+                href={onlineReviewsSource}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block text-xs uppercase tracking-[0.12em] text-muted-foreground underline underline-offset-4"
+              >
+                {t.reviews.sourceLabel}
+              </a>
+            </div>
           </div>
         </div>
       </div>

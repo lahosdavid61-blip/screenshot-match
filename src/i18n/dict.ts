@@ -55,7 +55,7 @@ const sr = {
   },
   gallery: {
     kicker: "Galerija",
-    title: "Unutra",
+    title: "Mesto",
     ph: "Autentične fotografije čekaju odobrenje vlasnika",
     shots: {
       interior: "Enterijer",
@@ -89,6 +89,14 @@ const sr = {
       staff: "ljubazno osoblje",
     },
     src: "Najčešće teme u recenzijama",
+    online: "Izdvojena javna iskustva",
+    quotes: [
+      "Slatko mesto.",
+      "Tiho i opušteno mesto. Upravo mi je ovakvo nešto bilo potrebno u ovom trenutku.",
+      "Odlična usluga, ljubazno osoblje i prijatna atmosfera.",
+    ],
+    sourceLabel: "Kupci.com · javne recenzije",
+    google: "Ostavi ocenu na Google-u",
   },
   social: { kicker: "Instagram", title: "Šta je novo — pratite nas.", cta: "@dotconceptbar" },
   visit: {
@@ -174,7 +182,7 @@ const hu: Dict = {
   },
   gallery: {
     kicker: "Galéria",
-    title: "Bent",
+    title: "A helyszín",
     ph: "A hiteles fotók a tulajdonosi jóváhagyásra várnak",
     shots: {
       interior: "Belső tér",
@@ -208,6 +216,14 @@ const hu: Dict = {
       staff: "kedves személyzet",
     },
     src: "Leggyakoribb témák a véleményekben",
+    online: "Kiemelt nyilvános vélemények",
+    quotes: [
+      "Kedves hely.",
+      "Csendes, nyugodt hely. Pont erre volt szükségem ebben a pillanatban.",
+      "Kiváló kiszolgálás, kedves személyzet és kellemes hangulat.",
+    ],
+    sourceLabel: "Kupci.com · nyilvános vélemények",
+    google: "Értékelés a Google-on",
   },
   social: { kicker: "Instagram", title: "Újdonságok — kövess minket.", cta: "@dotconceptbar" },
   visit: {
@@ -292,7 +308,7 @@ const en: Dict = {
   },
   gallery: {
     kicker: "Gallery",
-    title: "Inside",
+    title: "The venue",
     ph: "Authentic photos pending owner approval",
     shots: {
       interior: "Interior",
@@ -326,6 +342,14 @@ const en: Dict = {
       staff: "friendly staff",
     },
     src: "Most mentioned in reviews",
+    online: "Selected public reviews",
+    quotes: [
+      "Lovely place.",
+      "A quiet and relaxed place. Exactly what I needed at that moment.",
+      "Excellent service, friendly staff and a pleasant atmosphere.",
+    ],
+    sourceLabel: "Kupci.com · public reviews",
+    google: "Rate us on Google",
   },
   social: { kicker: "Instagram", title: "What's new — follow along.", cta: "@dotconceptbar" },
   visit: {

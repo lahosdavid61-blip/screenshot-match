@@ -102,6 +102,9 @@
   --accent: var(--olive);
   --accent-foreground: var(--charcoal);
   --dot-red: oklch(0.62 0.22 25);
+  --drink-panel: oklch(0.23 0.07 164);
+  --drink-panel-fg: var(--ivory);
+  --drink-panel-border: oklch(0.95 0.025 94 / 15%);
   --map-bg: oklch(0.205 0.06 164);
   --map-street: oklch(0.75 0.04 150 / 32%);
   --map-street-strong: oklch(0.85 0.06 150 / 65%);
@@ -271,6 +274,9 @@
   --map-street: oklch(0.85 0 0 / 25%);
   --map-street-strong: oklch(0.95 0 0 / 65%);
   --map-label: oklch(0.95 0 0);
+  --drink-panel: oklch(0.1 0 0);
+  --drink-panel-fg: oklch(0.94 0 0);
+  --drink-panel-border: oklch(0.95 0 0 / 18%);
 }
 
 :root[data-theme="chalk"] {
@@ -304,9 +310,7 @@
   --map-street: oklch(0.25 0 0 / 22%);
   --map-street-strong: oklch(0.15 0 0 / 56%);
   --map-label: oklch(0.14 0 0);
-}
-
-:root[data-theme="noir"] img:not(.brand-logo),
-:root[data-theme="chalk"] img:not(.brand-logo) {
-  filter: grayscale(1) contrast(1.04);
+  --drink-panel: oklch(0.985 0 0);
+  --drink-panel-fg: oklch(0.14 0 0);
+  --drink-panel-border: oklch(0.14 0 0 / 18%);
 }

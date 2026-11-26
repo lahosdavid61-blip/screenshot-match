@@ -28,7 +28,7 @@ export function Gallery() {
               <img
                 src={g.src}
                 alt={t.gallery.shots[g.key]}
-                className="h-full w-full object-cover grayscale-[8%] transition duration-700 group-hover:scale-105"
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 loading={i > 1 ? "lazy" : "eager"}
               />
             </motion.button>

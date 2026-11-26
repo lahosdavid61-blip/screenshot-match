@@ -151,7 +151,8 @@ export function DrinkIllustration({ category, label }: { category: MenuCategory;
 
   return (
     <div
-      className="relative overflow-hidden border border-ivory/15 bg-[#12382d] p-5 shadow-2xl shadow-black/20"
+      className="relative overflow-hidden border bg-[var(--drink-panel)] p-5 text-[var(--drink-panel-fg)] shadow-2xl shadow-black/20"
+      style={{ borderColor: "var(--drink-panel-border)" }}
       aria-label={label}
     >
       <div
@@ -159,7 +160,7 @@ export function DrinkIllustration({ category, label }: { category: MenuCategory;
         style={{ backgroundColor: colors.glow, opacity: 0.2 }}
       />
       <div className="relative flex items-center justify-between">
-        <span className="kicker text-ivory/55">{label}</span>
+        <span className="kicker opacity-55">{label}</span>
         <span
           className="size-2 rounded-full"
           style={{ backgroundColor: colors.glow }}
