@@ -1,4 +1,4 @@
-import { cleanup, render, fireEvent } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { RealCoffeeBeans } from "./DotMotion";
 import { DrinkIllustration } from "./DrinkIllustration";
@@ -7,23 +7,15 @@ beforeEach(() => sessionStorage.clear());
 afterEach(cleanup);
 
 describe("DOT illustration motion", () => {
-  it("renders eight real photographic beans across both layers", () => {
+  it("renders eight real beans using four distinct bundled photographs", () => {
     const { container } = render(<><RealCoffeeBeans/><RealCoffeeBeans foreground/></>);
     const photos = [...container.querySelectorAll<HTMLImageElement>(".dot-bean img")];
     expect(photos).toHaveLength(8);
-    expect(photos.every(photo => photo.src.includes("CoffeeBeansWhiteBackground.jpg") && photo.alt === "")).toBe(true);
-    expect(container.querySelector(".dot-bean-layer svg")).toBeNull();
-    const masks = [...container.querySelectorAll<HTMLElement>(".dot-bean-cutout")];
-    expect(new Set(masks.map(mask => mask.style.clipPath)).size).toBe(4);
+    expect(new Set(photos.map(photo => photo.getAttribute("src"))).size).toBe(4);
+    expect(photos.every(photo => /^\/beans\/bean-[1-4]\.png$/.test(photo.getAttribute("src") ?? "") && photo.alt === "")).toBe(true);
+    expect(new Set(photos.map(photo => photo.style.clipPath)).size).toBe(4);
+    expect(container.querySelector(".dot-bean-ready")).toBeNull();
     expect(sessionStorage.getItem("dot-beans-seen")).toBeNull();
-  });
-
-  it("starts the cinematic entrance only after the photograph loads", () => {
-    const { container } = render(<RealCoffeeBeans/>);
-    const photo = container.querySelector<HTMLImageElement>(".dot-bean img")!;
-    expect(photo.closest(".dot-bean")).not.toHaveClass("dot-bean-ready");
-    fireEvent.load(photo);
-    expect(photo.closest(".dot-bean")).toHaveClass("dot-bean-ready");
   });
 
   it("renders the beans on every mount, even with an old session flag", () => {

@@ -60,21 +60,21 @@ export function Footer() {
         </p>
         <p className="mt-3 text-xs text-ivory/60">
           <a
-            href="https://commons.wikimedia.org/wiki/File:CoffeeBeansWhiteBackground.jpg"
+            href="https://github.com/dont-text-me/RoastedCoffeeDefectDataset"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2"
           >
-            Coffee beans — Raysonho
+            Coffee beans — RoastedCoffeeDefectDataset
           </a>
           {" · "}
           <a
-            href="https://creativecommons.org/publicdomain/zero/1.0/"
+            href="/beans/LICENSE.txt"
             target="_blank"
             rel="noopener noreferrer"
             className="underline underline-offset-2"
           >
-            CC0 1.0
+            Apache 2.0
           </a>
         </p>
       </div>

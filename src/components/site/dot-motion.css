@@ -1,65 +1,50 @@
-/* DOT cinematic photographic hero; other sections retain their SVG motion. */
-.dot-bean-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: visible;
-  perspective: 700px;
-}
+/* Local real-photo hero. Static final pose remains visible without JS. */
+.dot-bean-layer { position: absolute; inset: 0; pointer-events: none; overflow: visible; perspective: 800px; }
 .dot-bean-back { z-index: 0; }
 .dot-bean-front { z-index: 3; }
 .dot-bean {
   position: absolute;
   display: block;
-  width: clamp(36px, 6.8vw, 118px);
+  width: clamp(48px, 9.2vw, 148px);
+  aspect-ratio: 1.38;
   transform-origin: center;
   transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale));
-  filter: drop-shadow(2px 5px 5px oklch(0.12 0.03 45 / .36));
+  filter: drop-shadow(2px 7px 6px rgb(10 5 2 / .48));
   user-select: none;
+  opacity: 1;
   --bean-travel: 1;
-  opacity: 0;
+  animation: dot-cinematic-arrival var(--bean-duration) cubic-bezier(.22,1,.36,1) var(--bean-delay) both;
 }
-.dot-bean-ready {
-  animation: dot-cinematic-arrival var(--bean-duration) cubic-bezier(.19, 1, .22, 1) var(--bean-delay) both;
-}
-.dot-bean-cutout {
-  position: relative;
+.dot-bean-photo {
   display: block;
   width: 100%;
-  overflow: hidden;
-}
-.dot-bean-cutout img {
-  position: absolute;
-  display: block;
-  max-width: none;
   height: auto;
-  filter: brightness(1.20) contrast(1.06) saturate(1.12);
+  max-width: none;
+  filter: brightness(1.38) contrast(1.08) saturate(1.16);
 }
-.dot-bean-back .dot-bean-cutout img { filter: brightness(1.12) contrast(1.04) saturate(1.08); }
+.dot-bean-back .dot-bean-photo { filter: brightness(1.30) contrast(1.06) saturate(1.13); }
 @keyframes dot-cinematic-arrival {
   0% {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--bean-dx) * var(--bean-travel)), calc(-50% + var(--bean-dy) * var(--bean-travel))) rotate(calc(var(--bean-angle) + var(--bean-turn))) rotateY(-24deg) scale(calc(var(--bean-scale) * var(--bean-depth) * .64));
-    filter: blur(5px) drop-shadow(2px 7px 6px oklch(0.12 0.03 45 / .15));
+    opacity: .12;
+    transform: translate(calc(-50% + var(--bean-dx) * var(--bean-travel)), calc(-50% + var(--bean-dy) * var(--bean-travel))) rotate(calc(var(--bean-angle) + var(--bean-turn))) rotateY(-30deg) scale(calc(var(--bean-scale) * .62));
+    filter: blur(5px) drop-shadow(2px 6px 6px rgb(10 5 2 / .2));
   }
-  28% { opacity: .96; }
-  67% {
+  65% {
     opacity: 1;
-    transform: translate(calc(-50% + var(--bean-dx) * -.035 * var(--bean-travel)), calc(-50% + var(--bean-dy) * -.055 * var(--bean-travel))) rotate(calc(var(--bean-angle) - 4deg)) rotateY(5deg) scale(calc(var(--bean-scale) * 1.025));
-    filter: blur(.25px) drop-shadow(2px 6px 5px oklch(0.12 0.03 45 / .30));
+    transform: translate(calc(-50% - var(--bean-dx) * .025 * var(--bean-travel)), calc(-50% - var(--bean-dy) * .04 * var(--bean-travel))) rotate(calc(var(--bean-angle) - 3deg)) rotateY(4deg) scale(calc(var(--bean-scale) * 1.025));
+    filter: blur(.2px) drop-shadow(2px 7px 6px rgb(10 5 2 / .4));
   }
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale));
-    filter: blur(0) drop-shadow(2px 5px 5px oklch(0.12 0.03 45 / .36));
+    filter: drop-shadow(2px 7px 6px rgb(10 5 2 / .48));
   }
 }
 @media (max-width: 640px) {
-  .dot-bean { --bean-travel: .45; width: clamp(30px, 8.2vw, 56px); }
-  .dot-bean:nth-child(n+4) { display: none; }
+  .dot-bean { --bean-travel: .42; width: clamp(38px, 11vw, 68px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .dot-bean-ready { animation: none; opacity: 1; }
+  .dot-bean { animation: none; opacity: 1; }
 }
 
 .dot-section-art { flex: none; display: block; align-self: flex-end; width: clamp(70px, 11vw, 134px); color: currentColor; opacity: .92; pointer-events: none; }

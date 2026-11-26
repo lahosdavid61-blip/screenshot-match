@@ -1,0 +1,9 @@
+Coffee bean photography from RoastedCoffeeDefectDataset (dont-text-me), licensed Apache-2.0.
+https://github.com/dont-text-me/RoastedCoffeeDefectDataset
+
+Original unmodified PNGs:
+bean-1.png: data/columbia-caturra-fruitInfused-normal-0-0.png
+bean-2.png: data/columbia-caturra-fruitInfused-normal-0-1.png
+bean-3.png: data/columbia-caturra-fruitInfused-normal-0-10.png
+bean-4.png: data/columbia-caturra-fruitInfused-normal-0-11.png
+CSS display masks and color adjustments by the DOT website project.

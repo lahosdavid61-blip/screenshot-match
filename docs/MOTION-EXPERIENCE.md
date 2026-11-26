@@ -20,3 +20,6 @@ Photographic update: four CSS-clipped silhouettes from a single 2560 × 1706 Wik
 ## Cinematic inspiration
 - Distillo (CSS Design Awards Website of the Day): https://www.cssdesignawards.com/sites/distillo/39324/ — coffee-focused animated product storytelling.
 - Awwwards-inspired principle: layered photography and typography with one memorable entrance, not a blocking loader. The Awwwards Distillo page could not be opened. All motion and crop masks are original implementations; no third-party code or animation was copied.
+
+## Local-image reliability fix
+The previous external photo and image-readiness gate have been removed. Four individually photographed normal roasted beans are now bundled under public/beans/, with the upstream license and credits. Eight photo elements render on every visit or reload, with CSS-only entrance motion and a static reduced-motion pose. The image masks remove the original light backgrounds visually. No browser/network dependency on Wikimedia remains. The actual binary files were checked by SHA against the upstream files. Browser/build tests were not run in this environment.

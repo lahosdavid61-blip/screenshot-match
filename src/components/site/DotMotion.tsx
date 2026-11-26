@@ -1,94 +1,60 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useInView } from "motion/react";
 
-// Four distinct beans cropped from Raysonho's real CC0 studio photograph.
-export const coffeeBeanPhoto =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CoffeeBeansWhiteBackground.jpg/2560px-CoffeeBeansWhiteBackground.jpg";
-
-// Crop coordinates are normalized to a 1000 × 667 reference preview.
-// Hand-traced silhouettes remove the white background and original cast shadows.
-const crops = [
-  { x: 394, y: 357, w: 61, h: 53, outline: "polygon(4% 33%, 14% 18%, 30% 7%, 48% 3%, 64% 10%, 84% 27%, 96% 49%, 97% 69%, 85% 86%, 65% 96%, 44% 96%, 25% 85%, 9% 65%, 1% 48%)" },
-  { x: 497, y: 361, w: 80, h: 62, outline: "polygon(3% 60%, 10% 42%, 25% 23%, 47% 6%, 65% 1%, 82% 8%, 94% 24%, 98% 43%, 92% 64%, 77% 80%, 55% 94%, 32% 98%, 15% 87%, 4% 75%)" },
-  { x: 777, y: 250, w: 55, h: 50, outline: "polygon(3% 45%, 12% 25%, 29% 10%, 52% 3%, 73% 7%, 89% 23%, 97% 44%, 93% 63%, 81% 83%, 61% 95%, 43% 96%, 21% 85%, 6% 70%)" },
-  { x: 229, y: 357, w: 96, h: 58, outline: "polygon(2% 66%, 8% 46%, 23% 29%, 44% 13%, 64% 2%, 79% 4%, 92% 16%, 98% 37%, 94% 55%, 79% 70%, 62% 82%, 44% 94%, 23% 97%, 7% 89%)" },
+// Actual roasted coffee photographs, bundled with the site (Apache-2.0).
+// These files are intentionally local: no external image host or load-state gate.
+const photos = [
+  { src: "/beans/bean-1.png", outline: "polygon(1% 43%, 5% 26%, 15% 12%, 30% 3%, 45% 1%, 60% 4%, 73% 11%, 83% 22%, 89% 38%, 89% 55%, 84% 71%, 75% 82%, 62% 89%, 45% 89%, 28% 84%, 14% 76%, 5% 64%, 1% 53%)" },
+  { src: "/beans/bean-2.png", outline: "polygon(1% 40%, 5% 25%, 14% 13%, 27% 4%, 44% 1%, 60% 3%, 72% 10%, 81% 21%, 87% 37%, 88% 54%, 84% 71%, 75% 82%, 62% 87%, 47% 87%, 31% 82%, 17% 73%, 6% 61%, 1% 50%)" },
+  { src: "/beans/bean-3.png", outline: "polygon(1% 35%, 6% 19%, 17% 8%, 32% 1%, 48% 2%, 64% 7%, 77% 16%, 86% 28%, 92% 44%, 92% 59%, 86% 73%, 74% 81%, 59% 85%, 43% 83%, 28% 77%, 14% 65%, 5% 51%)" },
+  { src: "/beans/bean-4.png", outline: "polygon(1% 36%, 6% 21%, 17% 10%, 32% 3%, 48% 1%, 64% 5%, 78% 14%, 88% 29%, 91% 45%, 90% 63%, 84% 77%, 72% 87%, 57% 91%, 41% 89%, 25% 81%, 13% 69%, 4% 55%)" },
 ] as const;
 
-// Deliberately composed rather than randomized: independent direction, depth,
-// scale, angle and timing create a photographic still life around the wordmark.
 const beans = [
-  { crop: 3, x: 7, y: 6, angle: -30, size: 0.95, dx: -230, dy: -110, turn: -55, delay: 0.12, duration: 1.30, depth: 0.88 },
-  { crop: 0, x: 21, y: 0, angle: 35, size: 0.69, dx: -90, dy: -190, turn: 45, delay: 0.26, duration: 1.12, depth: 1.05 },
-  { crop: 1, x: 34, y: 91, angle: -42, size: 0.95, dx: -130, dy: 145, turn: -60, delay: 0.38, duration: 1.26, depth: 0.96 },
-  { crop: 2, x: 48, y: 5, angle: 24, size: 0.65, dx: 35, dy: -175, turn: 70, delay: 0.19, duration: 1.18, depth: 1.08 },
-  { crop: 0, x: 61, y: 92, angle: 73, size: 1.13, dx: 80, dy: 180, turn: -40, delay: 0.32, duration: 1.32, depth: 0.88 },
-  { crop: 1, x: 75, y: 2, angle: -68, size: 0.82, dx: 170, dy: -115, turn: 52, delay: 0.24, duration: 1.23, depth: 1.02 },
-  { crop: 2, x: 91, y: 79, angle: -32, size: 1.12, dx: 245, dy: 105, turn: 80, delay: 0.40, duration: 1.28, depth: 0.95 },
-  { crop: 3, x: 96, y: 17, angle: 52, size: 0.88, dx: 255, dy: -40, turn: -65, delay: 0.15, duration: 1.34, depth: 1.06 },
+  { photo: 0, x: 6, y: 14, angle: -36, size: 0.94, dx: -180, dy: -90, turn: -48, delay: .08, duration: 1.26 },
+  { photo: 1, x: 22, y: 6, angle: 38, size: .83, dx: -80, dy: -135, turn: 58, delay: .22, duration: 1.18 },
+  { photo: 2, x: 32, y: 93, angle: -49, size: 1.02, dx: -110, dy: 125, turn: -52, delay: .27, duration: 1.24 },
+  { photo: 3, x: 48, y: 10, angle: 23, size: .68, dx: 35, dy: -160, turn: 61, delay: .13, duration: 1.30 },
+  { photo: 1, x: 61, y: 96, angle: 69, size: 1.12, dx: 95, dy: 145, turn: -43, delay: .31, duration: 1.23 },
+  { photo: 2, x: 76, y: 4, angle: -65, size: .84, dx: 125, dy: -105, turn: 53, delay: .18, duration: 1.27 },
+  { photo: 3, x: 89, y: 87, angle: -24, size: 1.16, dx: 180, dy: 95, turn: 68, delay: .34, duration: 1.24 },
+  { photo: 0, x: 94, y: 24, angle: 49, size: .90, dx: 190, dy: -45, turn: -54, delay: .11, duration: 1.35 },
 ] as const;
 
-function PhotographicBean({ bean }: { bean: (typeof beans)[number] }) {
-  const crop = crops[bean.crop];
-  const imageRef = useRef<HTMLImageElement>(null);
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    const image = imageRef.current;
-    if (image?.complete && image.naturalWidth > 0) setReady(true);
-  }, []);
-  return (
-    <span
-      className={`dot-bean${ready ? " dot-bean-ready" : ""}`}
-      style={{
-        left: `${bean.x}%`,
-        top: `${bean.y}%`,
-        "--bean-angle": `${bean.angle}deg`,
-        "--bean-scale": bean.size,
-        "--bean-dx": `${bean.dx}px`,
-        "--bean-dy": `${bean.dy}px`,
-        "--bean-turn": `${bean.turn}deg`,
-        "--bean-delay": `${bean.delay}s`,
-        "--bean-duration": `${bean.duration}s`,
-        "--bean-depth": bean.depth,
-      } as CSSProperties}
-    >
-      <span
-        className="dot-bean-cutout"
-        style={{ aspectRatio: `${crop.w} / ${crop.h}`, clipPath: crop.outline }}
-      >
-        <img
-          ref={imageRef}
-          src={coffeeBeanPhoto}
-          onLoad={() => setReady(true)}
-          onError={() => setReady(false)}
-          alt=""
-          width={2560}
-          height={1706}
-          loading="eager"
-          decoding="async"
-          fetchPriority="high"
-          draggable={false}
-          referrerPolicy="no-referrer"
-          style={{
-            width: `${100000 / crop.w}%`,
-            left: `${-100 * crop.x / crop.w}%`,
-            top: `${-100 * crop.y / crop.h}%`,
-          }}
-        />
-      </span>
-    </span>
-  );
-}
-
-/** Replays on every page mount without storage, timers or a blocking loader. */
 export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }) {
   return (
-    <span
-      aria-hidden="true"
-      className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}
-    >
-      {beans.map((bean, i) =>
-        i % 2 === (foreground ? 1 : 0) ? <PhotographicBean key={i} bean={bean} /> : null,
-      )}
+    <span aria-hidden="true" className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}>
+      {beans.map((bean, i) => {
+        if (i % 2 !== (foreground ? 1 : 0)) return null;
+        const photo = photos[bean.photo];
+        return (
+          <span
+            key={i}
+            className="dot-bean"
+            style={{
+              left: `${bean.x}%`,
+              top: `${bean.y}%`,
+              "--bean-angle": `${bean.angle}deg`,
+              "--bean-scale": bean.size,
+              "--bean-dx": `${bean.dx}px`,
+              "--bean-dy": `${bean.dy}px`,
+              "--bean-turn": `${bean.turn}deg`,
+              "--bean-delay": `${bean.delay}s`,
+              "--bean-duration": `${bean.duration}s`,
+            } as CSSProperties}
+          >
+            <img
+              className="dot-bean-photo"
+              src={photo.src}
+              style={{ clipPath: photo.outline }}
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+              draggable={false}
+            />
+          </span>
+        );
+      })}
     </span>
   );
 }

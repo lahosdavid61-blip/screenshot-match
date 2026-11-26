@@ -60,3 +60,6 @@ See the complete research package at `/home/ubuntu/DOT-CONCEPT-BAR-RESEARCH.zip`
 - Original: 4367 × 2911, https://upload.wikimedia.org/wikipedia/commons/8/81/CoffeeBeansWhiteBackground.jpg
 - Used preview: 2560 × 1706, https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/CoffeeBeansWhiteBackground.jpg/2560px-CoffeeBeansWhiteBackground.jpg
 - Both original and preview were visually inspected. Four separated beans were traced and cropped with CSS; warm brightness/contrast correction is applied in the browser. Generic decorative imagery, not a photograph of DOT products. External hosting remains necessary in this editing environment.
+
+## Current coffee bean photographs (supersedes earlier hero sources)
+Source: https://github.com/dont-text-me/RoastedCoffeeDefectDataset (Apache-2.0). Four actual normal roasted bean images were visually inspected and copied byte-for-byte from the repository. No AI-generated imagery. CSS applies clipping and color correction, without changing the original PNGs. See public/beans/NOTICE.txt for file mapping and license.
