@@ -50,7 +50,7 @@ const sr = {
   gallery: {
     kicker: "Galerija",
     title: "Unutra",
-    ph: "Fotografija uskoro",
+    ph: "Autentične fotografije čekaju odobrenje vlasnika",
     shots: {
       interior: "Enterijer",
       bar: "Šank",
@@ -151,7 +151,7 @@ const hu: Dict = {
   gallery: {
     kicker: "Galéria",
     title: "Bent",
-    ph: "Fotó hamarosan",
+    ph: "A hiteles fotók a tulajdonosi jóváhagyásra várnak",
     shots: {
       interior: "Belső tér",
       bar: "Pult",
@@ -251,7 +251,7 @@ const en: Dict = {
   gallery: {
     kicker: "Gallery",
     title: "Inside",
-    ph: "Photo coming soon",
+    ph: "Authentic photos pending owner approval",
     shots: {
       interior: "Interior",
       bar: "The bar",

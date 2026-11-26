@@ -37,7 +37,7 @@ export function Reviews() {
               ))}
             </ul>
             <p className="mt-4 text-sm text-muted-foreground">
-              Google · via Restaurant Guru · {r.checked}
+              {r.source} rating · review themes via Restaurant Guru · {r.checked}
             </p>
           </div>
         </div>
