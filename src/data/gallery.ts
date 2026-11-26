@@ -1,5 +1,9 @@
 // Placeholders until the owner supplies approved photographs (usage rights unconfirmed).
-export type Shot = { id: string; key: "interior" | "bar" | "facade" | "drinks" | "detail" | "evening"; span: string };
+export type Shot = {
+  id: string;
+  key: "interior" | "bar" | "facade" | "drinks" | "detail" | "evening";
+  span: string;
+};
 export const gallery: Shot[] = [
   { id: "g1", key: "interior", span: "md:col-span-7 md:row-span-2 aspect-[4/5] md:aspect-auto" },
   { id: "g2", key: "facade", span: "md:col-span-5 aspect-[4/3]" },

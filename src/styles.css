@@ -105,9 +105,19 @@
   --border: oklch(0.19 0 0 / 18%);
   --input: oklch(0.19 0 0 / 25%);
   --ring: var(--burgundy);
-  --chart-1: var(--burgundy); --chart-2: var(--olive); --chart-3: var(--warmgrey); --chart-4: var(--charcoal); --chart-5: var(--ivory);
-  --sidebar: var(--ivory); --sidebar-foreground: var(--charcoal); --sidebar-primary: var(--burgundy); --sidebar-primary-foreground: var(--ivory);
-  --sidebar-accent: var(--muted); --sidebar-accent-foreground: var(--charcoal); --sidebar-border: var(--border); --sidebar-ring: var(--ring);
+  --chart-1: var(--burgundy);
+  --chart-2: var(--olive);
+  --chart-3: var(--warmgrey);
+  --chart-4: var(--charcoal);
+  --chart-5: var(--ivory);
+  --sidebar: var(--ivory);
+  --sidebar-foreground: var(--charcoal);
+  --sidebar-primary: var(--burgundy);
+  --sidebar-primary-foreground: var(--ivory);
+  --sidebar-accent: var(--muted);
+  --sidebar-accent-foreground: var(--charcoal);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
   --ease-dot: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -123,30 +133,66 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--font-serif); font-size: 1.0625rem; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3, .font-display { font-family: var(--font-display); }
-  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
-  ::selection { background: var(--burgundy); color: var(--ivory); }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: var(--burgundy);
+    color: var(--ivory);
+  }
 }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 @utility kicker {
   font-family: var(--font-display);
-  font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 @utility section-num {
-  font-family: var(--font-display); font-weight: 800; line-height: 0.8;
-  font-size: clamp(4rem, 12vw, 11rem); letter-spacing: -0.06em;
-  -webkit-text-stroke: 1px currentColor; color: transparent;
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.8;
+  font-size: clamp(4rem, 12vw, 11rem);
+  letter-spacing: -0.06em;
+  -webkit-text-stroke: 1px currentColor;
+  color: transparent;
 }
 @utility link-line {
   background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
   transition: background-size 0.5s var(--ease-dot);
-  &:hover, &:focus-visible { background-size: 100% 1px; }
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
 }
 @utility grain {
-  background-image: radial-gradient(color-mix(in oklab, var(--charcoal) 9%, transparent) 1px, transparent 1px);
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--charcoal) 9%, transparent) 1px,
+    transparent 1px
+  );
   background-size: 5px 5px;
 }

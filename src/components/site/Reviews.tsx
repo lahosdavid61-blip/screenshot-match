@@ -15,8 +15,14 @@ export function Reviews() {
             <p className="font-display text-[28vw] font-extrabold leading-[0.8] tracking-[-0.07em] text-primary md:text-[14vw]">
               {r.value.toFixed(1)}
             </p>
-            <p className="mt-6 font-display text-lg">{t.reviews.of} 5 — {r.count} {t.reviews.count}</p>
-            <div className="mt-8"><Magnetic href={business.mapsSearch} external className={btn.line}>{t.reviews.read}</Magnetic></div>
+            <p className="mt-6 font-display text-lg">
+              {t.reviews.of} 5 — {r.count} {t.reviews.count}
+            </p>
+            <div className="mt-8">
+              <Magnetic href={business.mapsSearch} external className={btn.line}>
+                {t.reviews.read}
+              </Magnetic>
+            </div>
           </Reveal>
           <div className="col-span-12 md:col-span-6 md:col-start-7">
             <p className="kicker text-muted-foreground">{t.reviews.src}</p>
@@ -30,7 +36,9 @@ export function Reviews() {
                 </Reveal>
               ))}
             </ul>
-            <p className="mt-4 text-sm text-muted-foreground">Google · via Restaurant Guru · {r.checked}</p>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Google · via Restaurant Guru · {r.checked}
+            </p>
           </div>
         </div>
       </div>
