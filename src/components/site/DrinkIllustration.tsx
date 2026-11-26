@@ -136,7 +136,41 @@ function Soft() {
   );
 }
 
-export function DrinkIllustration({ category, label }: { category: MenuCategory; label: string }) {
+function MenuCard() {
+  return (
+    <g>
+      <rect x="43" y="23" width="124" height="132" rx="3" fill="#f0e5c9" />
+      <path
+        d="M61 49h87M61 63h63M61 91h87M61 105h72M61 133h48"
+        stroke="#593b2c"
+        strokeWidth="4"
+        strokeLinecap="round"
+        opacity="0.8"
+      />
+      <circle cx="139" cy="75" r="13" fill="#d76671" opacity="0.9" />
+      <path d="M134 75h10M139 70v10" stroke="#f8cd62" strokeWidth="3" strokeLinecap="round" />
+      <path
+        d="M79 115c8-12 19-12 27 0"
+        fill="none"
+        stroke="#8f573d"
+        strokeWidth="4"
+        strokeLinecap="round"
+      />
+      <path d="M82 115h21" stroke="#8f573d" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="105" cy="37" r="5" fill="#d99d5d" />
+    </g>
+  );
+}
+
+export function DrinkIllustration({
+  category,
+  label,
+  variant,
+}: {
+  category: MenuCategory;
+  label: string;
+  variant?: "menu";
+}) {
   const Illustration =
     category === "coffee"
       ? Coffee
@@ -167,22 +201,14 @@ export function DrinkIllustration({ category, label }: { category: MenuCategory;
           aria-hidden
         />
       </div>
-      {category === "coffee" ? (
-        <img
-          src="/dot-coffee-clean.png"
-          alt={label}
-          className="drink-float mx-auto mt-2 h-[220px] w-full max-w-[260px] object-cover object-center"
-        />
-      ) : (
-        <svg
-          viewBox="0 0 210 175"
-          className="drink-float mx-auto mt-2 h-auto w-full max-w-[260px]"
-          role="img"
-          aria-label={label}
-        >
-          <Illustration />
-        </svg>
-      )}
+      <svg
+        viewBox="0 0 210 175"
+        className="drink-float mx-auto mt-2 h-auto w-full max-w-[260px]"
+        role="img"
+        aria-label={label}
+      >
+        {variant === "menu" ? <MenuCard /> : <Illustration />}
+      </svg>
     </div>
   );
 }

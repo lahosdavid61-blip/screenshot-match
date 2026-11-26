@@ -85,6 +85,7 @@ export function Menu() {
               <DrinkIllustration
                 category={illustrationCategory}
                 label={t.menu.cats[illustrationCategory]}
+                variant={cat === "all" && !moment ? "menu" : undefined}
               />
             </motion.div>
             <div className="mt-10 border-t border-ivory/20 pt-6">
