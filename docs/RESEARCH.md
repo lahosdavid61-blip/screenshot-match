@@ -43,3 +43,11 @@ The research observed public image references, including 53 Restaurant Guru phot
 - Confirmed reservation policy, events and any official Facebook URL.
 
 See the complete research package at `/home/ubuntu/DOT-CONCEPT-BAR-RESEARCH.zip` and the detailed reports under `DOT-CONCEPT-BAR-RESEARCH/04-REPORTS/`.
+
+
+## Decorative coffee bean photograph
+- Source: https://commons.wikimedia.org/wiki/File:Coffee_bean_transparent.png
+- Original photo: Jeff Kubina (https://commons.wikimedia.org/wiki/File:Coffee_bean.jpg); transparent cutout: Chiccodoro, 2008.
+- License: https://creativecommons.org/licenses/by-sa/2.0/ (CC BY-SA 2.0).
+- Original transparent image: 1005 × 1005 pixels, https://upload.wikimedia.org/wikipedia/commons/5/55/Coffee_bean_transparent.png
+- Use: generic decorative coffee bean photograph, not claimed to be taken at DOT. Same unmodified file displayed with different static CSS rotations/scales. Visible attribution is provided in the footer. Image is externally hosted; no binary copy was available in the editing environment.

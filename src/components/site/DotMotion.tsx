@@ -1,58 +1,48 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { useInView } from "motion/react";
 
+// Original photograph by Jeff Kubina, transparent cutout by Chiccodoro (CC BY-SA 2.0).
+// Reused at different static angles; see the visible footer credit and docs/RESEARCH.md.
+export const coffeeBeanPhoto = "https://upload.wikimedia.org/wikipedia/commons/5/55/Coffee_bean_transparent.png";
+
 const beans = [
-  [7, 19, -26, 0.14, 1], [20, 6, 34, 0.23, 0.72],
-  [34, 83, -47, 0.3, 0.9], [47, 13, 72, 0.12, 0.68],
-  [58, 92, 25, 0.35, 1.1], [69, 5, -18, 0.18, 0.8],
-  [84, 73, -59, 0.28, 1.15], [94, 25, 48, 0.09, 0.9],
-  [12, 90, 58, 0.4, 0.67], [76, 42, 24, 0.37, 0.52],
+  [6, 12, -48, 0.98], [22, 2, 38, 0.74],
+  [35, 94, 112, 0.88], [48, 8, -17, 0.65],
+  [61, 96, 24, 1.04], [73, 0, -75, 0.76],
+  [90, 78, 68, 1.08], [97, 21, -35, 0.83],
 ] as const;
 
-/** A non-blocking, session-scoped opening detail, not a loading screen. */
-export function CoffeeBeanOrbit({ foreground = false }: { foreground?: boolean }) {
-  const [play, setPlay] = useState(false);
-  const checked = useRef(false);
-  useEffect(() => {
-    if (checked.current) return;
-    checked.current = true;
-    try {
-      // The two decorative layers use the same session flag.
-      if (sessionStorage.getItem("dot-beans-seen")) return;
-    } catch { /* storage may be disabled */ }
-    setPlay(true);
-  }, []);
-  useEffect(() => {
-    if (!play) return;
-    try { sessionStorage.setItem("dot-beans-seen", "1"); } catch { /* optional */ }
-    const stop = () => setPlay(false);
-    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") stop(); };
-    window.addEventListener("pointerdown", stop, { once: true });
-    window.addEventListener("keydown", onKey);
-    const timeout = window.setTimeout(stop, 2350);
-    return () => {
-      window.clearTimeout(timeout);
-      window.removeEventListener("pointerdown", stop);
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [play]);
-  if (!play) return null;
+/** Static photographic decoration, rendered on every page load, including refresh. */
+export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }) {
   return (
-    <span aria-hidden="true" className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}>
-      {beans.map(([x, y, angle, delay, scale], i) => (i % 2 === (foreground ? 1 : 0) ? (
-        <span key={i} className="dot-bean" style={{
-          left: `${x}%`, top: `${y}%`, "--bean-angle": `${angle}deg`,
-          "--bean-delay": `${delay}s`, "--bean-scale": scale,
-          "--bean-drift": `${x < 50 ? -45 : 45}px`,
-        } as CSSProperties}>
-          <svg viewBox="0 0 54 76" fill="none">
-            <path d="M28 3C11 1 2 18 3 40c1 20 10 33 25 33 15-1 25-16 23-37C49 15 43 5 28 3Z" fill="#80513b" stroke="#442b22" strokeWidth="2"/>
-            <path d="M13 12C4 27 8 49 18 59c-4-16-5-34 3-48Z" fill="#c18a5f" opacity=".64"/>
-            <path d="M28 7c-12 14 9 20-1 36-6 10-8 17-1 26" stroke="#422a20" strokeWidth="4" strokeLinecap="round"/>
-            <path d="M32 9c-8 15 9 23 0 36-5 9-7 16-3 22" stroke="#d39c73" strokeWidth="1.5" strokeLinecap="round"/>
-          </svg>
-        </span>
-      ) : null))}
+    <span
+      aria-hidden="true"
+      className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}
+    >
+      {beans.map(([x, y, angle, scale], i) =>
+        i % 2 === (foreground ? 1 : 0) ? (
+          <img
+            key={i}
+            className="dot-bean"
+            src={coffeeBeanPhoto}
+            alt=""
+            width={1005}
+            height={1005}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            draggable={false}
+            referrerPolicy="no-referrer"
+            style={{
+              left: `${x}%`,
+              top: `${y}%`,
+              "--bean-angle": `${angle}deg`,
+              "--bean-scale": scale,
+              "--bean-flip": i % 3 === 0 ? -1 : 1,
+            } as CSSProperties}
+          />
+        ) : null,
+      )}
     </span>
   );
 }

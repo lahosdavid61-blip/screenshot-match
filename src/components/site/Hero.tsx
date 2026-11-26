@@ -2,7 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
 import { EASE, Magnetic, btn } from "./ui";
-import { CoffeeBeanOrbit } from "./DotMotion";
+import { RealCoffeeBeans } from "./DotMotion";
 
 export function Hero() {
   const { t } = useLang();
@@ -36,7 +36,7 @@ export function Hero() {
 
         <h1 className="relative col-span-12 mt-6 md:mt-2">
           <span className="sr-only">DOT Concept Bar — Subotica</span>
-          <CoffeeBeanOrbit />
+          <RealCoffeeBeans />
           <span aria-hidden className="relative z-[1] block overflow-hidden">
             <motion.span
               className="block font-display text-[34vw] font-extrabold leading-[0.78] tracking-[-0.08em] md:text-[27vw]"
@@ -55,7 +55,7 @@ export function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: reduce ? 0 : 1.1, ease: EASE, delay: reduce ? 0 : 0.7 }}
           />
-          <CoffeeBeanOrbit foreground />
+          <RealCoffeeBeans foreground />
         </h1>
 
         <div className="col-span-12 mt-6 grid grid-cols-12 gap-4 border-t border-border pt-6">
