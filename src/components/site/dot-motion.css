@@ -17,6 +17,9 @@
   filter: drop-shadow(2px 5px 5px oklch(0.12 0.03 45 / .36));
   user-select: none;
   --bean-travel: 1;
+  opacity: 0;
+}
+.dot-bean-ready {
   animation: dot-cinematic-arrival var(--bean-duration) cubic-bezier(.19, 1, .22, 1) var(--bean-delay) both;
 }
 .dot-bean-cutout {
@@ -56,7 +59,7 @@
   .dot-bean:nth-child(n+4) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .dot-bean { animation: none; opacity: 1; }
+  .dot-bean-ready { animation: none; opacity: 1; }
 }
 
 .dot-section-art { flex: none; display: block; align-self: flex-end; width: clamp(70px, 11vw, 134px); color: currentColor; opacity: .92; pointer-events: none; }

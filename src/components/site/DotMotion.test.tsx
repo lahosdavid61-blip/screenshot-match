@@ -1,4 +1,4 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, fireEvent } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { RealCoffeeBeans } from "./DotMotion";
 import { DrinkIllustration } from "./DrinkIllustration";
@@ -16,6 +16,14 @@ describe("DOT illustration motion", () => {
     const masks = [...container.querySelectorAll<HTMLElement>(".dot-bean-cutout")];
     expect(new Set(masks.map(mask => mask.style.clipPath)).size).toBe(4);
     expect(sessionStorage.getItem("dot-beans-seen")).toBeNull();
+  });
+
+  it("starts the cinematic entrance only after the photograph loads", () => {
+    const { container } = render(<RealCoffeeBeans/>);
+    const photo = container.querySelector<HTMLImageElement>(".dot-bean img")!;
+    expect(photo.closest(".dot-bean")).not.toHaveClass("dot-bean-ready");
+    fireEvent.load(photo);
+    expect(photo.closest(".dot-bean")).toHaveClass("dot-bean-ready");
   });
 
   it("renders the beans on every mount, even with an old session flag", () => {

@@ -29,9 +29,15 @@ const beans = [
 
 function PhotographicBean({ bean }: { bean: (typeof beans)[number] }) {
   const crop = crops[bean.crop];
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete && image.naturalWidth > 0) setReady(true);
+  }, []);
   return (
     <span
-      className="dot-bean"
+      className={`dot-bean${ready ? " dot-bean-ready" : ""}`}
       style={{
         left: `${bean.x}%`,
         top: `${bean.y}%`,
@@ -50,7 +56,10 @@ function PhotographicBean({ bean }: { bean: (typeof beans)[number] }) {
         style={{ aspectRatio: `${crop.w} / ${crop.h}`, clipPath: crop.outline }}
       >
         <img
+          ref={imageRef}
           src={coffeeBeanPhoto}
+          onLoad={() => setReady(true)}
+          onError={() => setReady(false)}
           alt=""
           width={2560}
           height={1706}
