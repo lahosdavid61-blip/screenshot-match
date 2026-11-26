@@ -12,3 +12,5 @@ Original SVG artwork and finite CSS animation, integrated with the existing Moti
 Run `npm run build`, `npm test` and `npm run lint` with the existing dependencies. In the browser, check 360, 390, 430, 768, 1280, 1440 and 1920px widths, each theme/language, rapid category switching, direct hash navigation and reduced-motion preference. Confirm that the gallery lightbox, search, prices, opening hours and contact links remain intact.
 
 The authoring environment could inspect and edit repository files through the GitHub API but could not clone the repository or install/run dependencies because network access was unavailable. Browser rendering and build/test results therefore require verification before merging or deploying.
+
+Added component-level tests for session behavior, dismissal, category-specific SVG elements and menu switching. These tests have not been executed in the authoring environment.

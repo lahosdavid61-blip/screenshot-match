@@ -17,7 +17,7 @@ export function CoffeeBeanOrbit({ foreground = false }: { foreground?: boolean }
     if (checked.current) return;
     checked.current = true;
     try {
-      // The two layers share a session flag via the same page-level custom event.
+      // The two decorative layers use the same session flag.
       if (sessionStorage.getItem("dot-beans-seen")) return;
     } catch { /* storage may be disabled */ }
     setPlay(true);

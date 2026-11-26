@@ -81,3 +81,8 @@
   .dot-section-art *, .dot-drink-art * { animation: none !important; }
   .dot-camera-flash, .dot-clink-spark { opacity: 0; }
 }
+
+/* Light theme: keep glass outlines legible against the chalk panel. */
+:root[data-theme="chalk"] .dot-drink-art [stroke="#f0e5c9"],
+:root[data-theme="chalk"] .dot-drink-art [stroke="#f5e6c6"] { stroke: oklch(0.42 0.035 65); }
+:root[data-theme="chalk"] .dot-drink-art .dot-steam-once { stroke: oklch(0.50 0.045 65); }
