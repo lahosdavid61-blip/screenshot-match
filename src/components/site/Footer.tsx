@@ -58,6 +58,25 @@ export function Footer() {
         <p className="mt-8 border-t border-ivory/20 pt-6 text-xs text-ivory/60">
           © {new Date().getFullYear()} DOT Concept Bar, Subotica. {t.footer.rights}
         </p>
+        <p className="mt-3 text-xs text-ivory/60">
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Coffee_bean_transparent.png"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+          >
+            Coffee bean — Jeff Kubina / Chiccodoro
+          </a>
+          {" · "}
+          <a
+            href="https://creativecommons.org/licenses/by-sa/2.0/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2"
+          >
+            CC BY-SA 2.0
+          </a>
+        </p>
       </div>
     </footer>
   );

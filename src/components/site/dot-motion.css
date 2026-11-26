@@ -1,14 +1,24 @@
-/* DOT's original, finite SVG motion system. No additional animation dependency. */
-.dot-bean-layer { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
+/* DOT photographic hero and original, finite SVG motion for other sections. */
+.dot-bean-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
 .dot-bean-back { z-index: 0; }
 .dot-bean-front { z-index: 3; }
-.dot-bean { position: absolute; display: block; width: clamp(23px, 4.2vw, 66px); transform-origin: center; opacity: 0; filter: drop-shadow(2px 5px 3px oklch(0.12 0.035 45 / .24)); animation: dot-bean-arrive 1.85s var(--ease-dot) var(--bean-delay) both; }
-.dot-bean svg { display: block; width: 100%; height: auto; }
-@keyframes dot-bean-arrive {
-  0% { opacity: 0; transform: translate(calc(-50% + var(--bean-drift)), 32px) rotate(calc(var(--bean-angle) - 110deg)) scale(.25); }
-  32% { opacity: 1; }
-  54%, 73% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale)); }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--bean-drift)), -75%) rotate(calc(var(--bean-angle) + 40deg)) scale(.7); }
+.dot-bean {
+  position: absolute;
+  display: block;
+  width: clamp(35px, 6.3vw, 112px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  transform: translate(-50%, -50%) rotate(var(--bean-angle)) scale(var(--bean-scale)) scaleX(var(--bean-flip));
+  filter: drop-shadow(2px 4px 3px oklch(0.12 0.035 45 / .28));
+  user-select: none;
+  animation: none;
+  transition: none;
 }
 
 .dot-section-art { flex: none; display: block; align-self: flex-end; width: clamp(70px, 11vw, 134px); color: currentColor; opacity: .92; pointer-events: none; }
@@ -77,7 +87,6 @@
   .dot-section-art-small { width: 38px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .dot-bean-layer { display: none; }
   .dot-section-art *, .dot-drink-art * { animation: none !important; }
   .dot-camera-flash, .dot-clink-spark { opacity: 0; }
 }

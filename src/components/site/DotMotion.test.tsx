@@ -1,24 +1,28 @@
-import { cleanup, render, fireEvent } from "@testing-library/react";
+import { cleanup, render } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { CoffeeBeanOrbit } from "./DotMotion";
+import { RealCoffeeBeans } from "./DotMotion";
 import { DrinkIllustration } from "./DrinkIllustration";
 
 beforeEach(() => sessionStorage.clear());
 afterEach(cleanup);
 
 describe("DOT illustration motion", () => {
-  it("renders both bean layers and dismisses them without blocking the page", () => {
-    const { container } = render(<><CoffeeBeanOrbit/><CoffeeBeanOrbit foreground/></>);
-    expect(container.querySelectorAll(".dot-bean")).toHaveLength(10);
-    expect(sessionStorage.getItem("dot-beans-seen")).toBe("1");
-    fireEvent.keyDown(window, { key: "Escape" });
-    expect(container.querySelectorAll(".dot-bean")).toHaveLength(0);
+  it("renders eight real photographic beans across both layers", () => {
+    const { container } = render(<><RealCoffeeBeans/><RealCoffeeBeans foreground/></>);
+    const photos = [...container.querySelectorAll<HTMLImageElement>("img.dot-bean")];
+    expect(photos).toHaveLength(8);
+    expect(photos.every(photo => photo.src.includes("Coffee_bean_transparent.png") && photo.alt === "")).toBe(true);
+    expect(container.querySelector(".dot-bean-layer svg")).toBeNull();
+    expect(sessionStorage.getItem("dot-beans-seen")).toBeNull();
   });
 
-  it("does not replay the bean introduction within the same session", () => {
+  it("renders the beans on every mount, even with an old session flag", () => {
     sessionStorage.setItem("dot-beans-seen", "1");
-    const { container } = render(<CoffeeBeanOrbit/>);
-    expect(container.querySelector(".dot-bean")).toBeNull();
+    const first = render(<RealCoffeeBeans/>);
+    expect(first.container.querySelectorAll(".dot-bean")).toHaveLength(4);
+    first.unmount();
+    const refreshed = render(<RealCoffeeBeans/>);
+    expect(refreshed.container.querySelectorAll(".dot-bean")).toHaveLength(4);
   });
 
   it.each(["beer", "cocktails", "wine"] as const)("renders two distinct glasses for %s", (category) => {
