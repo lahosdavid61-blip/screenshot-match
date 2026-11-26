@@ -16,7 +16,7 @@ export function EventMoment() {
         <Reveal className="mt-8 max-w-xl">
           <p className="text-lg leading-relaxed text-ivory/70 md:text-xl">{t.event.body}</p>
         </Reveal>
-        <div className="mt-14 max-w-3xl">
+        <div className="mt-14 grid gap-8 md:grid-cols-2">
           <motion.figure
             initial={reduce ? false : { opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,6 +30,20 @@ export function EventMoment() {
               loading="lazy"
             />
             <figcaption className="kicker mt-4 text-ivory/55">{t.event.caption}</figcaption>
+          </motion.figure>
+          <motion.figure
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.08 }}
+          >
+            <img
+              src="/dot-music.jpg"
+              alt={t.event.musicCaption}
+              className="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+            />
+            <figcaption className="kicker mt-4 text-ivory/55">{t.event.musicCaption}</figcaption>
           </motion.figure>
         </div>
       </div>

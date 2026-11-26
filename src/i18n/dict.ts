@@ -74,6 +74,7 @@ const sr = {
     title: "Muzika, ljudi i noć u DOT-u.",
     body: "Jedan zabeležen trenutak iz atmosfere bara — muzika, razgovori i čaše koje ostaju do kasno.",
     caption: "Atmosfera DOT-a, posle zalaska sunca",
+    musicCaption: "Živa muzika u DOT-u",
   },
   reviews: {
     kicker: "Utisci",
@@ -201,6 +202,7 @@ const hu: Dict = {
     title: "Zene, emberek és egy este a DOT-ban.",
     body: "Egy valódi pillanat a bár hangulatából — zene, beszélgetések és poharak egészen estig.",
     caption: "A DOT hangulata napnyugta után",
+    musicCaption: "Élő zene a DOT-ban",
   },
   reviews: {
     kicker: "Vélemények",
@@ -327,6 +329,7 @@ const en: Dict = {
     title: "Music, people and a night at DOT.",
     body: "A real moment from the bar atmosphere — music, conversation and glasses that stay late into the night.",
     caption: "The DOT mood after sunset",
+    musicCaption: "Live music at DOT",
   },
   reviews: {
     kicker: "Reviews",

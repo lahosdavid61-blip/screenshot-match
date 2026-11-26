@@ -67,7 +67,7 @@ export function SectionHead({
 const btnBase =
   "group inline-flex items-center gap-3 px-6 py-4 font-display text-sm font-semibold uppercase tracking-[0.14em] transition-colors duration-300";
 export const btn = {
-  solid: `${btnBase} bg-primary text-primary-foreground hover:bg-secondary`,
+  solid: `${btnBase} bg-primary text-primary-foreground hover:bg-foreground hover:text-background`,
   line: `${btnBase} border border-current hover:bg-foreground hover:text-background`,
   lineDark: `${btnBase} border border-ivory/60 text-ivory hover:bg-ivory hover:text-charcoal`,
 };
