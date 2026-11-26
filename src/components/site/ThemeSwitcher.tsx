@@ -15,12 +15,12 @@ export function ThemeSwitcher() {
     const saved = window.localStorage.getItem("dot-theme") as ThemeMode | null;
     const next = saved && modes.includes(saved) ? saved : "emerald";
     setTheme(next);
-    document.documentElement.dataset.theme = next;
+    document.documentElement.dataset["theme"] = next;
   }, []);
 
   const choose = (next: ThemeMode) => {
     setTheme(next);
-    document.documentElement.dataset.theme = next;
+    document.documentElement.dataset["theme"] = next;
     window.localStorage.setItem("dot-theme", next);
     setOpen(false);
   };

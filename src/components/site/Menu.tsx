@@ -34,7 +34,11 @@ export function Menu() {
     });
   }, [cat, moment, query]);
   const illustrationCategory: MenuCategory =
-    cat === "all" ? (moment ? momentCategories[moment][0] : "coffee") : cat;
+    cat === "all"
+      ? moment
+        ? (momentCategories[moment][0] ?? "coffee")
+        : "coffee"
+      : cat;
 
   const chooseMoment = (value: Moment) => {
     setMoment(value);
@@ -85,7 +89,7 @@ export function Menu() {
               <DrinkIllustration
                 category={illustrationCategory}
                 label={t.menu.cats[illustrationCategory]}
-                variant={cat === "all" && !moment ? "menu" : undefined}
+                {...(cat === "all" && !moment ? { variant: "menu" as const } : {})}
               />
             </motion.div>
             <div className="mt-10 border-t border-ivory/20 pt-6">
