@@ -39,7 +39,7 @@ The research observed public image references, including 53 Restaurant Guru phot
 - Current dated Serbian menu/cenovnik with item names, serving sizes and RSD prices.
 - Menu validity date and confirmation of VAT/service-fee treatment.
 - Original high-resolution photographs and written permission for website/commercial use, including cropping, channels, territory, duration and required credit.
-- Official current opening hours; Kafici.rs explicitly reported that opening hours were unknown.
+- Owner confirmation of the regular opening hours below and any event/holiday exceptions.
 - Confirmed reservation policy, events and any official Facebook URL.
 
 See the complete research package at `/home/ubuntu/DOT-CONCEPT-BAR-RESEARCH.zip` and the detailed reports under `DOT-CONCEPT-BAR-RESEARCH/04-REPORTS/`.
@@ -63,3 +63,9 @@ See the complete research package at `/home/ubuntu/DOT-CONCEPT-BAR-RESEARCH.zip`
 
 ## Current coffee bean photographs (supersedes earlier hero sources)
 Source: https://github.com/dont-text-me/RoastedCoffeeDefectDataset (Apache-2.0). Four actual normal roasted bean images were visually inspected and copied byte-for-byte from the repository. No AI-generated imagery. CSS applies clipping and color correction, without changing the original PNGs. See public/beans/NOTICE.txt for file mapping and license.
+
+## Opening hours update (2026-11-27)
+
+Regular public-listing schedule adopted for the website:
+Monday–Thursday 08:00–22:00; Friday 08:00–24:00; Saturday and Sunday closed.
+The November 27 research found matching hours on [Restaurant Guru](https://restaurantguru.com/DOT-CONCEPT-BARandstore-Subotica), [WebTrag](https://webtrag.rs/firma/dot-concept-bar-subotica) and the [Dot OSM listing on Kafici.rs](https://kafici.rs/subotica/dot/). The separate Kafici.rs listing with the full venue name does not publish hours. [Restaurants10](https://www.restaurants10.com/CS/Subotica/1389900877980496/Dot-Concept-Bar) gives different Friday/Saturday hours, possibly reflecting earlier or event schedules. Owner confirmation remains pending; the site notes that holidays and special events can differ. The status uses Europe/Belgrade local time, with Friday midnight represented as 24:00.

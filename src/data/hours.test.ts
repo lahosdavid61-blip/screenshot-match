@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isOpenAt, type WeekHours } from "./hours";
+import { hours, isOpenAt, type WeekHours } from "./hours";
 
 const d = { open: "08:00", close: "02:00" };
 const week: WeekHours = { 0: null, 1: d, 2: d, 3: d, 4: d, 5: d, 6: d };
@@ -14,5 +14,24 @@ describe("isOpenAt (Europe/Belgrade)", () => {
   it("open Sunday 01:00 from Saturday, closed Sunday noon", () => {
     expect(isOpenAt(week, new Date("2026-11-29T00:00:00Z"))).toBe(true);
     expect(isOpenAt(week, new Date("2026-11-29T11:00:00Z"))).toBe(false);
+  });
+});
+
+describe("DOT regular opening hours", () => {
+  it("opens at 08:00 and closes at 22:00 on Monday", () => {
+    expect(isOpenAt(hours, new Date("2026-11-23T06:59:00Z"))).toBe(false);
+    expect(isOpenAt(hours, new Date("2026-11-23T07:00:00Z"))).toBe(true);
+    expect(isOpenAt(hours, new Date("2026-11-23T20:59:00Z"))).toBe(true);
+    expect(isOpenAt(hours, new Date("2026-11-23T21:00:00Z"))).toBe(false);
+  });
+  it("closes at midnight Friday and remains closed on Saturday and Sunday", () => {
+    expect(isOpenAt(hours, new Date("2026-11-27T22:59:00Z"))).toBe(true);
+    expect(isOpenAt(hours, new Date("2026-11-27T23:00:00Z"))).toBe(false);
+    expect(isOpenAt(hours, new Date("2026-11-28T11:00:00Z"))).toBe(false);
+    expect(isOpenAt(hours, new Date("2026-11-29T11:00:00Z"))).toBe(false);
+  });
+  it("uses Belgrade summer time rather than the visitor's timezone", () => {
+    expect(isOpenAt(hours, new Date("2026-07-06T05:59:00Z"))).toBe(false);
+    expect(isOpenAt(hours, new Date("2026-07-06T06:00:00Z"))).toBe(true);
   });
 });
