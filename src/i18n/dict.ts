@@ -24,9 +24,6 @@ const sr = {
     title: "Dizajn, ljudi i dobro piće — na jednom mestu.",
     body: "DOT je urbani concept bar u centru Subotice, nekoliko koraka od Gradske kuće. Moderan enterijer, opuštena atmosfera i pažljivo složena karta pića: od jutarnje kafe do koktela i vina uveče.",
     facts: ["Centar grada, kod Gradske kuće", "Besplatan Wi-Fi", "Povremeno živa muzika"],
-    verified: "Provereno istraživanjem",
-    verifiedBody:
-      "Adresa, telefon i Instagram potvrđeni su kroz gradske turističke stranice, Google Maps i lokalne izvore. Aktuelne cene i odobrene fotografije čekaju potvrdu vlasnika.",
     maps: "Otvori Google Maps",
     sources: "Izvori",
   },
@@ -45,6 +42,14 @@ const sr = {
     clear: "Obriši",
     note: "Cene i kompletnu kartu proveri u baru ili nam piši na Instagramu.",
     ask: "Pitaj za cenu",
+    items: {
+      coffee: "Kafa",
+      draft: "Točeno pivo",
+      cocktails: "Kokteli",
+      wine: "Vino",
+      sherry: "Fino sherry",
+      lemonade: "Limunada",
+    },
     cats: {
       coffee: "Kafa",
       beer: "Pivo",
@@ -70,7 +75,7 @@ const sr = {
     next: "Sledeća",
   },
   event: {
-    kicker: "Trenutak",
+    kicker: "Zabava",
     title: "Muzika, ljudi i noć u DOT-u.",
     body: "Jedan zabeležen trenutak iz atmosfere bara — muzika, razgovori i čaše koje ostaju do kasno.",
     caption: "Atmosfera DOT-a, posle zalaska sunca",
@@ -152,9 +157,6 @@ const hu: Dict = {
     title: "Design, emberek és jó italok — egy helyen.",
     body: "A DOT egy városi concept bar Szabadka belvárosában, néhány lépésre a Városházától. Modern belső tér, laza hangulat és gondosan összeállított itallap: a reggeli kávétól az esti koktélokig és borokig.",
     facts: ["Belváros, a Városháza mellett", "Ingyenes Wi-Fi", "Időnként élő zene"],
-    verified: "Kutatással ellenőrizve",
-    verifiedBody:
-      "A címet, a telefonszámot és az Instagram-profilt a városi turisztikai oldalak, a Google Maps és helyi források egyezően megerősítik. Az aktuális árak és a jóváhagyott fotók tulajdonosi megerősítésre várnak.",
     maps: "Google Maps megnyitása",
     sources: "Források",
   },
@@ -173,6 +175,14 @@ const hu: Dict = {
     clear: "Törlés",
     note: "Az árakat és a teljes kínálatot kérdezd a pultnál vagy írj nekünk Instagramon.",
     ask: "Ár a helyszínen",
+    items: {
+      coffee: "Kávé",
+      draft: "Csapolt sör",
+      cocktails: "Koktélok",
+      wine: "Bor",
+      sherry: "Fino sherry",
+      lemonade: "Limonádé",
+    },
     cats: {
       coffee: "Kávé",
       beer: "Sör",
@@ -198,7 +208,7 @@ const hu: Dict = {
     next: "Következő",
   },
   event: {
-    kicker: "Pillanat",
+    kicker: "Szórakozás",
     title: "Zene, emberek és egy este a DOT-ban.",
     body: "Egy valódi pillanat a bár hangulatából — zene, beszélgetések és poharak egészen estig.",
     caption: "A DOT hangulata napnyugta után",
@@ -279,9 +289,6 @@ const en: Dict = {
     title: "Design, people and good drinks — in one place.",
     body: "DOT is an urban concept bar in central Subotica, a few steps from City Hall. A modern interior, a relaxed crowd and a considered drinks list: from morning coffee to cocktails and wine in the evening.",
     facts: ["City centre, by City Hall", "Free Wi-Fi", "Live music now and then"],
-    verified: "Verified by research",
-    verifiedBody:
-      "The address, phone number and Instagram profile match across the city tourism listings, Google Maps and local sources. Current prices and approved photographs still require owner confirmation.",
     maps: "Open Google Maps",
     sources: "Sources",
   },
@@ -300,6 +307,14 @@ const en: Dict = {
     clear: "Clear",
     note: "Ask at the bar for prices and the full list, or message us on Instagram.",
     ask: "Price at the bar",
+    items: {
+      coffee: "Coffee",
+      draft: "Draft beer",
+      cocktails: "Cocktails",
+      wine: "Wine",
+      sherry: "Fino sherry",
+      lemonade: "Lemonade",
+    },
     cats: {
       coffee: "Coffee",
       beer: "Beer",
@@ -325,7 +340,7 @@ const en: Dict = {
     next: "Next",
   },
   event: {
-    kicker: "A moment",
+    kicker: "Entertainment",
     title: "Music, people and a night at DOT.",
     body: "A real moment from the bar atmosphere — music, conversation and glasses that stay late into the night.",
     caption: "The DOT mood after sunset",

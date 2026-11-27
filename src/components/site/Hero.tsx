@@ -1,14 +1,37 @@
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useLang } from "@/i18n/LangContext";
 import { business } from "@/data/business";
 import { EASE, Magnetic } from "./ui";
-import { RealCoffeeBeans } from "./DotMotion";
+import { RealCoffeeBeans, type BeanMotionState } from "./DotMotion";
 
 const heroAction = "group inline-flex w-full min-h-11 items-center justify-between gap-3 border px-4 py-2.5 font-display text-xs font-semibold uppercase tracking-[0.12em] transition-colors duration-300";
 
 export function Hero() {
   const { t } = useLang();
   const reduce = useReducedMotion();
+  const beanArea = useRef<HTMLHeadingElement>(null);
+  const [beanMotion, setBeanMotion] = useState<BeanMotionState>("idle");
+
+  useEffect(() => {
+    const area = beanArea.current;
+    if (!area || reduce || typeof IntersectionObserver === "undefined") return;
+    let inView = false;
+    const sync = () => {
+      const running = inView && document.visibilityState === "visible";
+      setBeanMotion(previous => running ? "running" : previous === "idle" ? "idle" : "paused");
+    };
+    const observer = new IntersectionObserver(([entry]) => {
+      inView = !!entry?.isIntersecting;
+      sync();
+    }, { threshold: 0 });
+    observer.observe(area);
+    document.addEventListener("visibilitychange", sync);
+    return () => {
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", sync);
+    };
+  }, [reduce]);
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 800], [0, reduce ? 0 : 120]);
   const init = (d: number) => (reduce ? false : { opacity: 0, y: 20, transition: { delay: d } });
@@ -37,9 +60,9 @@ export function Hero() {
           46.0988° N — 19.6651° E
         </motion.p>
 
-        <h1 className="relative isolate col-span-12 mt-6 md:mt-2">
+        <h1 ref={beanArea} className="relative isolate col-span-12 mt-6 md:mt-2">
           <span className="sr-only">DOT Concept Bar — Subotica</span>
-          <RealCoffeeBeans />
+          <RealCoffeeBeans motionState={reduce ? "idle" : beanMotion} />
           <span aria-hidden className="relative z-[1] block overflow-hidden">
             <motion.span
               className="block font-display text-[34vw] font-extrabold leading-[0.78] tracking-[-0.08em] md:text-[27vw]"
@@ -58,7 +81,7 @@ export function Hero() {
             animate={{ scale: 1 }}
             transition={{ duration: reduce ? 0 : 0.85, ease: EASE, delay: reduce ? 0 : 0.48 }}
           />
-          <RealCoffeeBeans foreground />
+          <RealCoffeeBeans foreground motionState={reduce ? "idle" : beanMotion} />
         </h1>
 
         <div className="col-span-12 mt-6 grid grid-cols-12 items-start gap-6 border-t border-border pt-6 md:gap-4">

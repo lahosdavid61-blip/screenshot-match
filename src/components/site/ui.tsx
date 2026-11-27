@@ -3,7 +3,7 @@ import { useRef, type ReactNode, type MouseEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { SectionMotion, type SectionKind } from "./DotMotion";
 
-const sectionArt: Partial<Record<string, SectionKind>> = { "01": "about", "03": "gallery", "04": "events", "05": "reviews", "06": "visit" };
+const sectionArt: Partial<Record<string, SectionKind>> = { "01": "about", "02": "menu", "03": "gallery", "04": "events", "05": "reviews", "06": "visit" };
 
 export const EASE = [0.22, 1, 0.36, 1] as const;
 

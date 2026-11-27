@@ -21,9 +21,14 @@ const beans = [
   { photo: 0, x: 94, y: 24, angle: 49, size: .90, dx: 190, dy: -45, turn: -54, delay: .11, duration: 1.35 },
 ] as const;
 
-export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }) {
+export type BeanMotionState = "idle" | "running" | "paused";
+
+export function RealCoffeeBeans({ foreground = false, motionState = "idle" }: {
+  foreground?: boolean;
+  motionState?: BeanMotionState;
+}) {
   return (
-    <span aria-hidden="true" className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}>
+    <span aria-hidden="true" data-motion={motionState} className={`dot-bean-layer ${foreground ? "dot-bean-front" : "dot-bean-back"}`}>
       {beans.map((bean, i) => {
         if (i % 2 !== (foreground ? 1 : 0)) return null;
         const photo = photos[bean.photo];
@@ -41,6 +46,10 @@ export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }
               "--bean-turn": `${bean.turn}deg`,
               "--bean-delay": `${bean.delay}s`,
               "--bean-duration": `${bean.duration}s`,
+              "--bean-float-duration": `${6.8 + (i % 5) * .73}s`,
+              "--bean-float-x": `${(i % 2 ? -1 : 1) * (3 + i % 4)}px`,
+              "--bean-float-y": `${-(4 + i % 3)}px`,
+              "--bean-float-turn": `${(i % 2 ? -1 : 1) * (2 + i % 3)}deg`,
             } as CSSProperties}
           >
             <img
@@ -59,11 +68,22 @@ export function RealCoffeeBeans({ foreground = false }: { foreground?: boolean }
   );
 }
 
-export type SectionKind = "about" | "gallery" | "events" | "reviews" | "visit" | "hours";
+export type SectionKind = "about" | "menu" | "gallery" | "events" | "reviews" | "visit" | "hours";
 
 function SectionArt({ kind }: { kind: SectionKind }) {
   const ink = "currentColor";
   const accent = "var(--dot-red)";
+  if (kind === "menu") return (
+    <g className="dot-scene-slide" stroke={ink} strokeWidth="2.3" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M17 16h60v78H17z" fill="var(--dot-art-bg, transparent)" />
+      <path d="M25 16v78M33 41h33M33 51h27M33 64h23M33 75h18" opacity=".65" />
+      <circle cx="49" cy="29" r="4" fill={accent} stroke="none" />
+      <path d="M70 43h41L93 69v19h11M93 88H82M93 69 75 43" fill="var(--dot-art-bg, transparent)" />
+      <path d="M79 54h23L91 67Z" fill={accent} stroke="none" opacity=".85" />
+      <path d="M101 43l7-11" fill="none" />
+      <circle cx="108" cy="32" r="5" fill="none" stroke={accent} />
+    </g>
+  );
   if (kind === "gallery") return (
     <>
       <g className="dot-scene-slide" stroke={ink} strokeWidth="2.4" strokeLinejoin="round">

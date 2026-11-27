@@ -2,16 +2,18 @@ import type { MenuItem as Item } from "@/data/menu";
 
 export function MenuItem({
   item,
+  name,
   catLabel,
   priceLabel,
 }: {
   item: Item;
+  name: string;
   catLabel: string;
   priceLabel: string;
 }) {
   return (
     <div className="flex items-baseline gap-4 border-b border-ivory/20 py-5">
-      <span className="font-display text-xl font-semibold md:text-3xl">{item.name}</span>
+      <span className="font-display text-xl font-semibold md:text-3xl">{name}</span>
       <span className="kicker hidden text-ivory/40 sm:inline">{catLabel}</span>
       <span
         aria-hidden

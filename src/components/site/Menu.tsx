@@ -30,10 +30,10 @@ export function Menu() {
     return menu.filter((item) => {
       const matchesCategory = cat === "all" || item.category === cat;
       const matchesMoment = !allowed || allowed.includes(item.category);
-      const matchesQuery = !normalized || item.name.toLocaleLowerCase().includes(normalized);
+      const matchesQuery = !normalized || t.menu.items[item.id].toLocaleLowerCase().includes(normalized);
       return matchesCategory && matchesMoment && matchesQuery;
     });
-  }, [cat, moment, query]);
+  }, [cat, moment, query, t.menu.items]);
   const illustrationCategory: MenuCategory =
     cat === "all"
       ? moment
@@ -149,6 +149,7 @@ export function Menu() {
                   >
                     <MenuItem
                       item={item}
+                      name={t.menu.items[item.id]}
                       catLabel={t.menu.cats[item.category]}
                       priceLabel={t.menu.ask}
                     />

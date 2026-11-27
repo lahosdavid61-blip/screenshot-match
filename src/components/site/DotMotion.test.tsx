@@ -18,6 +18,18 @@ describe("DOT illustration motion", () => {
     expect(sessionStorage.getItem("dot-beans-seen")).toBeNull();
   });
 
+  it("keeps the same coffee beans when motion pauses and resumes", () => {
+    const { container, rerender } = render(<RealCoffeeBeans motionState="running" />);
+    const bean = container.querySelector(".dot-bean");
+    expect(container.querySelector(".dot-bean-layer")).toHaveAttribute("data-motion", "running");
+    rerender(<RealCoffeeBeans motionState="paused" />);
+    expect(container.querySelector(".dot-bean-layer")).toHaveAttribute("data-motion", "paused");
+    expect(container.querySelector(".dot-bean")).toBe(bean);
+    rerender(<RealCoffeeBeans motionState="running" />);
+    expect(container.querySelector(".dot-bean-layer")).toHaveAttribute("data-motion", "running");
+    expect(container.querySelector(".dot-bean")).toBe(bean);
+  });
+
   it("renders the beans on every mount, even with an old session flag", () => {
     sessionStorage.setItem("dot-beans-seen", "1");
     const first = render(<RealCoffeeBeans/>);
